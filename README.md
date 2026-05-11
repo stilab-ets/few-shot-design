@@ -7,7 +7,7 @@ This repository provides the complete replication package for our study on the i
 ## 📂 Repository Structure
 
 ### Data Collection
-The datasets are available in the [[data](data/)](https://github.com/stilab-ets/few-shot-design/tree/main/data) folder. They include json files for the GitHub issues fetched from the **Facebook React**, **Bitcoin**, **OpenCV**, **Tensorflow**, and **Microsoft VsCode** projects.
+The datasets are available in the [[data](data/)] folder. They include json files for the GitHub issues fetched from the **Facebook React**, **Bitcoin**, **OpenCV**, **Tensorflow**, and **Microsoft VsCode** projects.
 
 ### Prompt
 The **[SYSTEM_PROMPT](https://github.com/stilab-ets/few-shot-design/blob/main/SYSTEM_PROMPT.txt)** - File containing the system prompt instructions used for all inferences across all models and projects.
@@ -23,15 +23,15 @@ The **[SYSTEM_PROMPT](https://github.com/stilab-ets/few-shot-design/blob/main/SY
 ### Inference results
 Contains the results of the runs across all 4 LLMs and 5 GitHub projects for: **Zero-shot**, **Random Selection**, **Similarity Selection**, **Random orders**, and **Targeted orders**.
 
-All results are organized under the [[rqs](rqs/)](https://github.com/stilab-ets/few-shot-design/tree/main/rqs) directory.
+All results are organized under the [[rqs](rqs/)] directory.
 
 ### Analysis
-Replication of statistical analyses can be found in the [[results](results/)](https://github.com/stilab-ets/few-shot-design/tree/main/results) directory. The folder contains jupyter notebooks to reproduce the quantitative evaluation performed in the paper.
+Replication of statistical analyses can be found in the [[results](results/)] directory. The folder contains jupyter notebooks to reproduce the quantitative evaluation performed in the paper.
 
 ---
 
 ## 📊 Results and Plots
-All processed results and plots are organized under the [[results](results/)](https://github.com/stilab-ets/few-shot-design/tree/main/results) directory:
+All processed results and plots are organized under the [[results](results/)] directory:
 
 - **[RQ1](results/rq1/)** – Few-Shot number impact on performance and cost.
 - **[RQ2](results/rq2/)** – Few-Shot example selection impact on performance and cost - Fixed few-shot number, comparison between similarity selection vs. random selection.
