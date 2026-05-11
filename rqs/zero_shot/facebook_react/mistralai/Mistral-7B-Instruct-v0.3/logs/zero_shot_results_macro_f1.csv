@@ -1,0 +1,2 @@
+Timestamp,Repo,Model,FewShot_Count,Macro_F1,Token_Count
+2026-03-07T07:56:10.601520+00:00,facebook_react,mistralai/Mistral-7B-Instruct-v0.3,0,0.42779769016328156,88

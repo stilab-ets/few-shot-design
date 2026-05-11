@@ -1,0 +1,2 @@
+Timestamp,Repo,Model,FewShot_Count,Macro_F1,Token_Count
+2026-03-06T19:10:12.237078+00:00,facebook_react,google/gemma-3-12b-it,0,0.6356043956043956,85

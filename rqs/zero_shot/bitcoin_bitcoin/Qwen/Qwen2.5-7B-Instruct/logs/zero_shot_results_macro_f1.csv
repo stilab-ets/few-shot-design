@@ -1,0 +1,2 @@
+Timestamp,Repo,Model,FewShot_Count,Macro_F1,Token_Count
+2026-03-07T07:59:06.232250+00:00,bitcoin_bitcoin,Qwen/Qwen2.5-7B-Instruct,0,0.7682213331982917,84

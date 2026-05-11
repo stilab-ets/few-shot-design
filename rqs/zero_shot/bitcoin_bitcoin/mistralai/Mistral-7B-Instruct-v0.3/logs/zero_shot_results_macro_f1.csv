@@ -1,0 +1,2 @@
+Timestamp,Repo,Model,FewShot_Count,Macro_F1,Token_Count
+2026-03-07T07:56:18.183565+00:00,bitcoin_bitcoin,mistralai/Mistral-7B-Instruct-v0.3,0,0.624925210291064,88

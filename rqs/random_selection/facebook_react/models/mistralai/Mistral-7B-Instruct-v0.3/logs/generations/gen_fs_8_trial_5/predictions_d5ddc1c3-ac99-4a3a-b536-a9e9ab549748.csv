@@ -1,0 +1,856 @@
+Timestamp,Individual,Title,Body,Ground_Truth,Prediction
+2026-03-06 06:40:10,"[21, 22, 66, 130, 173, 239, 324, 379]",Programmatically access warnings / errors after rendering,"Let's say I have a component which has propTypes:
+```
+static propTypes = {
+   isError: React.PropTypes.bool.isRequired
+};
+```
+I want to ensure that this contract is not broken, so I have a test:
+```
+    it('should require an isError prop', () => {
+        expect(function () {
+            let result = renderReactComponent(<Component/>);
+        }).to.throw(Error);
+    });
+```
+Unfortunately, it doesn't throw an error - it DOES display a Warning statement.  I'd like that warning statement to be available, thus I should be able to alter my test to this:
+```
+    it('should require an isError prop', () => {
+        let result = renderReactComponent(<Component/>);
+        expect(result).to.have.property('warning');
+    });
+```
+thus ensuring the contract is maintained.",question,feature
+2026-03-06 06:40:10,"[21, 22, 66, 130, 173, 239, 324, 379]",React doesn't handle duplicate refs well,"If you (presumably accidentally) use the same ref on two components and then remove the second one, you would expect the ref to point to the first one but it doesn't.
+Either this test should pass:
+``` javascript
+it('should work when removing a ref with a duplicate name', function() {
+  var Component = React.createClass({
+    render: function() {
+      return <div>
+        <div ref=""dupRef"">A</div>
+        {this.props.showB && <div ref=""dupRef"">B</div>}
+      </div>;
+    }
+  });
+
+  var instance = ReactTestUtils.renderIntoDocument(
+    <Component showB={true} />
+  );
+  // Second <div /> tramples over the first
+  expect(instance.refs.dupRef.getDOMNode().innerHTML).toBe('B');
+  instance.setProps({showB: false});
+  // Now only the first child <div /> exists so the ref should point to it
+  expect(instance.refs.dupRef.getDOMNode().innerHTML).toBe('A');
+});
+```
+…or we should throw an error upon first render when trying to use a single ref in two places.",bug,bug
+2026-03-06 06:40:11,"[21, 22, 66, 130, 173, 239, 324, 379]",[npm:create-react-class] No way to implement getDerivedStateFromProps,"There seems to be no way to implement class methods such as `getDerivedStateFromProps` and a few others.
+Am I overlooking something?
+There is no mention of it here either: https://reactjs.org/docs/react-without-es6.html",question,feature
+2026-03-06 06:40:11,"[21, 22, 66, 130, 173, 239, 324, 379]",Async routes cause server-side checksum invalid error,"**NOTE:** This may be an issue for React Router instead. If so, please inform me, and I will notify them.
+I'm using Webpack, react-router, and react.
+I got this error while using react-router with async routes and server-side rendering:
+``` shell
+bundle.js:1 Warning: React attempted to reuse markup in a container but the checksum was invalid. This generally means that you are using server rendering and the markup generated on the server was not what the client was expecting. React injected new markup to compensate which works but you have lost many of the benefits of server rendering. Instead, figure out why the markup being generated is different on the client or server:
+ (client) <noscript data-reacti
+ (server) <div data-reactid="".1
+```
+My routes.cjsx has this:
+``` coffee
+# Routes
+path: 'game'
+getComponent: (location, cb) =>
+    require.ensure [], (require) =>
+        cb null, require './views/game'
+```
+If I change it to this, I no longer get that error:
+``` coffee
+# Routes
+path: 'game'
+getComponent: (location, cb) =>
+    cb null, require './views/game'
+```
+Is this a bug or something else?",question,bug
+2026-03-06 06:40:12,"[21, 22, 66, 130, 173, 239, 324, 379]",Context provider state initialisation.,"Consider a component wrapping a context provider:
+```js
+class ValueWrapper extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      value: null,
+      setValue: this.setValue,
+    };
+  }
+
+  setValue = (value) => {
+    this.setState({ value });
+  };
+
+  render = () => (
+    <Context.Provider value={this.state}>
+      {this.props.children}
+    </Context.Provider>
+  );
+}
+```
+A consumer then might want to set a default value when it is first mounted. The only way I can see to do this using the new API is to check for an existing value on first render:
+```js
+class ValueUpdater extends React.Component {
+  state = {
+    inputValue: 0,
+  };
+
+  handleInputChange = e => {
+    this.setState({ inputValue: e.target.value });
+  };
+
+  render = () => (
+    <Context.Consumer>
+      {({ value, setValue }) => {
+        if (!value) {
+          setValue(this.state.inputValue);
+        }
+
+        return (
+          <div>
+            <input type=""text"" value={value} onChange={handleInputChange}/>
+            <button onClick={() => setValue(this.state.inputValue)}>Update value</button>
+          </div>
+        );
+      }}
+    </Context.Consumer>
+  )
+};
+```
+But this seems to break the golden rule of updating state in the render method (`setValue(this.state.inputValue)`), as this would immediately cause a re-render. Ideally I would be able to call the `setValue` from the context in the `componentDidMount` method of the `ValueUpdater` component, but with context as a render prop, that's not possible, as far as I can tell. The docs suggest passing props down to another component:
+```js
+  render = () => (
+    <Context.Consumer>
+      {({ value, setValue }) => (
+          <ValueUpdaterInput setValue={ setValue } value={ value } />
+      )}
+    </Context.Consumer>
+  )
+```
+But if I tried to do the initialisation in the `ValueUpdaterInput` component's `componentDidMount` method, it would be called on every render, surely, as `ValueUpdaterInput` would be re-rendered each time?
+Is there a better pattern than this, or am I trying to use context inappropriately?",question,feature
+2026-03-06 06:40:13,"[21, 22, 66, 130, 173, 239, 324, 379]",can React support feature like keep-alive in Vue?,"i found this issue: https://github.com/facebook/react/issues/4770,  and @sophiebits said that React never reuses an instance after it's been unmounted.
+does it means that React will never support feature like keep-alive in Vue? or there is other way to maintain component's state?",feature,feature
+2026-03-06 06:40:13,"[21, 22, 66, 130, 173, 239, 324, 379]",save flag someplace if checksum was invalid,"we have tests that insure that prerendering = client rendering.
+Right now its a real cludge - we override console.warn, and watch to see if any checksum warnings are output.
+Instead how about adding data-checksum_invalid to the outer element?",feature,feature
+2026-03-06 06:40:13,"[21, 22, 66, 130, 173, 239, 324, 379]",Following NPM getting started guide incomplete and results in errors,"I decided to try out React today, and began following the Getting Started Guide for using[ React from npm](https://facebook.github.io/react/docs/getting-started.html#using-react-from-npm).  Unfortunately I was unable to get the example up and running.  The first problem I encountered was the missing HTML file which I scavenged from lower in the page and adapted.  However once I loaded up the `bundle.js` file in the HTML page I received the following error in the browser console:
+`Uncaught Invariant Violation: _registerComponent(...): Target container is not a DOM element.`
+Was there a step I missed somewhere?",question,bug
+2026-03-06 06:40:14,"[21, 22, 66, 130, 173, 239, 324, 379]",renderToString() fails to terminate comment node,"Run this:
+``` js
+let html = renderToString(<div>foo</div>)
+```
+Get this:
+```
+<div data-reactroot="""" data-reactid=""1"" data-react-checksum=""-1450897250"">foo</div>
+```
+Not sure if this is a bug but I thought `data-reactid` and friends are gone in `v15`, no?
+Also when testing `v15` with an old project using `v0.14.7` - which has a much complex scenario, `renderToString()` returned following causing a blank page:
+```
+<!-- react-empty: 1 -- data-react-checksum=""1336804998"">
+```
+Just wondering is the behavior for server rendering changing in `v15`? Thanks.",bug,question
+2026-03-06 06:40:14,"[21, 22, 66, 130, 173, 239, 324, 379]",New Context Provider may block Old context propagation if children are constant,"It seems that, if the children of a new-style `React.createContext()` context `Provider` are constant, the `Provider` can block updates from old-style `this.context` context providers from propagating to `this.context` consumers.
+This sandbox demonstrates the issue. Clicking the button with a number will correctly increment the `Root`'s `state` and `context`, but the update is only propagated to the `Child3`'s `context` (and its button) when the ""Colors!"" button is clicked, as it causes an update to the `value` of the new-style `Provider`:
+https://codesandbox.io/s/ol4lpokpjy
+<details>
+<summary>Copy of the source code in the sandbox</summary>
+```jsx
+import PropTypes from ""prop-types"";
+import React from ""react"";
+import ReactDOM from ""react-dom"";
+
+class Root extends React.Component {
+  constructor(props: {}) {
+    super(props);
+    this.state = {
+      count: 0
+    };
+    this.countUp = this.countUp.bind(this);
+  }
+
+  getChildContext() {
+    return {
+      ...this.context,
+      count: this.state.count,
+      countUp: this.countUp
+    };
+  }
+
+  render() {
+    return this.props.children;
+  }
+
+  countUp() {
+    this.setState(({ count }) => ({ count: count + 1 }));
+  }
+}
+
+Root.childContextTypes = {
+  count: PropTypes.number.isRequired,
+  countUp: PropTypes.func.isRequired
+};
+
+const ctx = React.createContext();
+
+class Child1 extends React.Component {
+  constructor(props: { onClick(): void }) {
+    super(props);
+    this.state = {
+      color: randomHexColor(),
+      newColor: this.newColor.bind(this)
+    };
+  }
+
+  render() {
+    return (
+      <ctx.Provider value={this.state}>{this.props.children}</ctx.Provider>
+    );
+  }
+
+  newColor() {
+    const color = randomHexColor();
+    this.setState(() => ({ color }));
+  }
+}
+
+function randomHexColor() {
+  const colorStr = Math.floor(Math.random() * (Math.pow(2, 24) - 1)).toString(
+    16
+  );
+  return ""#000000"".slice(0, -colorStr.length) + colorStr;
+}
+
+class Child2 extends React.Component {
+  render() {
+    return (
+      <ctx.Consumer>
+        {ctx => (
+          <React.Fragment>
+            <Child3 color={ctx.color} />
+            <button onClick={ctx.newColor}>Colors!</button>
+          </React.Fragment>
+        )}
+      </ctx.Consumer>
+    );
+  }
+}
+
+class Child3 extends React.Component {
+  render() {
+    return (
+      <button
+        style={{ color: this.props.color }}
+        onClick={this.context.countUp}
+      >
+        {this.context.count}
+      </button>
+    );
+  }
+}
+
+Child3.contextTypes = {
+  count: PropTypes.number.isRequired,
+  countUp: PropTypes.func.isRequired
+};
+
+ReactDOM.render(
+  <Root>
+    <Child1>
+      <Child2 />
+    </Child1>
+  </Root>,
+  document.getElementById(""root"")
+);
+
+```
+</details>
+Both old-style and new-style context updates should coexist.
+16.3.1; also broken in 16.3.0.
+This seems to only happen if the `children` of the `Provider` are constant, which is what happens when the children are provided on the first and only `ReactDOM.render` call. If `Child1` is updated to directly use `<Child2/>` instead of `{this.props.children}`, the problem does not happen.
+This can also be a problem when using a production optimization that hoists constant elements outside the Component if the specified children are constant, which would even defeat the fix/workaround for the example above.",bug,feature
+2026-03-06 06:40:15,"[21, 22, 66, 130, 173, 239, 324, 379]",Provide a way to register a last-chance exception handler,React should provide a way for us to register a last-chance exception handler for errors thrown in React event handlers. We have last-chance exception handlers registered for our other event-handling frameworks and this has proved extremely useful for making us aware of unexpected error conditions.,feature,feature
+2026-03-06 06:40:15,"[21, 22, 66, 130, 173, 239, 324, 379]",Standardize prop -> DOM attribute process,"Right now we have some inconsistencies which requires cognitive load.
+With the exception of `dangerouslySetInnerHTML`, I don't think there's ever any reason not to allow any sort of type as a prop in the DOM. Otherwise, `{false}` should put ""false"" in the DOM, `{{foo: 'bar'}}` should put ""[object Object]"".
+We still want to special case `null`/`undefined` as those indicate that we should empty the value. Otherwise, `'' + prop` will ensure that we call `toString()` on the object (so you could have a custom Person object if you want).
+This shouldn't be terriblely hard to fix, but we do want to make sure we test the change thoroughly. It will be a breaking change in some specific cases (mostly forms), so we'll also need to communicate this clearly.
+Tangentially, we'll be inconsistent with the way types work as children. For example `<div>{false}</div>` doesn't have a child with ""false"" as text. We need to do something for children due to the fact that we use objects and arrays as special indicators for mapping.",bug,feature
+2026-03-06 06:40:16,"[21, 22, 66, 130, 173, 239, 324, 379]","react-hooks/exhaustive-deps and useMemo(() => x, x)","I would like to memoize an array using `useMemo(() => x, x)`, where x.length is unknown but constant, and so think I have a legitimate use case to be able to disable the eslint warnings.
+I can find similar issues to this, including https://github.com/facebook/react/issues/18229#issuecomment-619569632, but not one where the length of the dependencies is unknown but constant.
+This code creates a warning
+> React Hook useMemo has a missing dependency: 'x'. Either include it or remove the dependency array.
+and
+> React Hook useMemo was passed a dependency list that is not an array literal. This means we can't statically verify whether you've passed the correct dependencies.
+Which links to an issue with the following comment
+> If you ... aren't sure your case is legit, file a new issue.
+https://github.com/facebook/react/issues/14920#issuecomment-472018817
+My use case, without the useMemo, is as follows:
+```ts
+/**
+ * When an array in `arrays` goes from length 0 to length > 0, call `callback`
+ */
+export const useCallbackWhenAnArrayPopulates = (
+  callback: () => void,
+  ...arrays: (readonly unknown[])[],
+) => {
+  //  const memoArrays = useMemo(() => arrays, arrays);
+  const prevArrays = useRef(arrays);
+
+  useEffect(() => {
+    if (prevArrays.current.length !== arrays.length) {
+      throw 'Unexpected array length change in useCallbackWhenArraysPopulate';
+    }
+    if (
+      prevArrays.current.some(
+        (value, index) => !value.length && arrays[index]?.length,
+      )
+    ) {
+      callback();
+    }
+    prevArrays.current = arrays;
+  }, [arrays, callback]);
+};
+```
+I would like to memoise `arrays`, which comes from spreading arguments passed to the hook, so that the useEffect is only called when one of these arguments changes. Ideally I'd do this with `useMemo(() => arrays, arrays)`.
+I know that [the dependency length for useMemo can't change](https://github.com/facebook/react/issues/18229), but though it's length is unknown, I would not expect it to change and prevent this from happening by throwing an error if it does.
+Is it safe to use `useMemo(() => arrays, arrays)` in this case, and disable the lint warning?
+Example usage:
+https://codesandbox.io/s/nervous-glade-qt4x2?file=/src/Counters.js
+(side note, not shown in this example are cases where the arrays could change together and you wouldn't want to call the callbacks twice when this happens)",feature,question
+2026-03-06 06:40:16,"[21, 22, 66, 130, 173, 239, 324, 379]",Pass dependencies to `useMemo` callback as arguments,"The `useMemo` factory function does not receive any arguments.
+**What is the desired behavior?**
+The `useMemo` factory function would receive the dependencies as arguments.
+**Why?**
+This would allow more compact syntax for memoizing components because of implicit returns and desctructuring. This came to mind after experiencing some of the issues in #14110. There may be other potential use cases too
+**Example of current behavior**
+```jsx
+const Avatar = () => {
+  const [src] = useSomeGlobalState([
+    state => state.user.avatar.src
+  ]);
+  return useMemo(() => <img src={src} />, [src])
+}
+```
+**Example of proposed behavior**
+```jsx
+const Avatar = () => 
+  useMemo(
+    (src) => <img src={src} />,
+    useSomeGlobalState([state => state.user.avatar.src])
+  );
+```
+React 16.8.1",feature,feature
+2026-03-06 06:40:18,"[21, 22, 66, 130, 173, 239, 324, 379]",Way to create pluggable Decorating Component,"How is it possible to make **pluggable** AOP-style component which transforms props and transmits it to child? More precisely, how to pass props to child element in parent render method?
+I want to use it like this:
+``` javascript
+// Scalable.js
+// Example of AOP-style decorating component
+import React from 'react'
+
+const Scalable = ({children}) =>
+  const scaledData = children.props.data.map(e => e + 1) // example 'transformation'
+  children.props.data = scaledData
+  {children}  // this is what i want
+
+Scalable.propTypes = {
+  children: React.PropTypes.element.isRequired
+}
+```
+``` javascript
+// ScalablePlot.js
+// plug <Scalable /> to transform data passed to <Plot />
+// and render <Plot /> with transformed data
+import React from 'react'
+
+const ScalablePlot = ({data}) =>
+  <Scalable>
+    <Plot data={data} />
+  </Scalable>
+```
+``` js
+// Plot.js
+import React from 'react'
+
+const Plot = ({data}) ->
+  //paint plot using data
+
+Plot.propTypes = {
+  data: React.PropTypes.arrayOf(React.PropTypes.number)
+}
+```
+However, when i do this, react renders child element without data props.
+# UPD
+Solution: should have used [React.cloneElement](https://facebook.github.io/react/docs/top-level-api.html#react.cloneelement)",question,feature
+2026-03-06 06:40:18,"[21, 22, 66, 130, 173, 239, 324, 379]",Uncontrolled radio fix is breaking master,"I'm not sure why but https://github.com/facebook/react/pull/10156 seems to have caused issues in production with us. We'll need to either revert or find a way to fix forward. Right now master is broken, and if we sync again before fixing, we'll break things.",bug,bug
+2026-03-06 06:40:19,"[21, 22, 66, 130, 173, 239, 324, 379]",Getting started docs are terrible,"I just came back to react after about a year or so of not using it and now the getting started docs are pretty much not helpful in the slightest. All the docs are now is just links to other websites without any instructions on how to get a react project running. I remember a year ago back in react 15 the docs had a step by step walkthrough for how to set up and get a project running from scratch and now they are just links to websites without react specific instructions. What happened to the docs, when did they become so useless?
+There needs to be a step by step guide added back to the docs, a guide that will get you from having nothing to running it in the browser instead of just links to other websites that don't have anything to do with react. I remember back in react 15, you could run through the guide and have a hello world app running within 10 minutes no problems, I have been trying to figure it out with these new docs for over an hour now and still 0 luck getting this running. The instructions used to actually be instructions, basically saying, install this, then that, then run this command in terminal, then do this and so on. The docs now just say, well you can use this, then has a link to a site that has nothing to do with react, there is not even any sort of instruction on the react website on what to do with that, just the link without any context around it. Can these docs please be reverted to the old versions or actually create a proper getting started page to get you from nothing to running?",question,question
+2026-03-06 06:40:19,"[21, 22, 66, 130, 173, 239, 324, 379]",hooks: useContext with useState not updating,"seems it's a **bug**. 😕
+Nested context provider and `useContext` hooks seems to be conflicting, updates get discarded.
+When connecting to a context, it should update whenever it's `value` changes.
+- **react**: `18.8.0-alpha.1` (also reproduced on `16.7.0-alpha.0`)
+- **browser**: `chrome 71`
+- **os**: macOS Sierra
+### more details
+While working on a cleanup of a localStorage ""connection"",
+I tried to mix 2 articles ([`[1]`](https://reactjs.org/docs/hooks-faq.html#how-to-avoid-passing-callbacks-down) & [`[2]`](https://reactjs.org/docs/context.html#updating-context-from-a-nested-component)) from the official react documentation, I've implemented it with hooks, but the value seems not to be passing through.
+I've put up a streamlined demo on [codesandbox `[3]`](https://codesandbox.io/s/0yzjr8vnrv).
+The actual implementation is only a couple of lines more (parsing it from and stringifying it to JSON).
+Workarounds that I found:
+- If I create a new function on each render around the `setValue` function, it actually works.
+- but this goes against the advice on [`[1]`](https://reactjs.org/docs/hooks-faq.html#how-to-avoid-passing-callbacks-down) about avoiding creating  new values.
+- Migrate it to a class and use `componentDidUpdate` instead of `useEffect`.
+- I'm actually using this right now, as it works. Including saving a reference to the function in the state.
+Is there anything that shouldn't work on the code below? the effect gets triggered with the changes,
+but the value doesn't get updated on the components that consume via hook. see repro code [`[3]`](https://codesandbox.io/s/0yzjr8vnrv)
+```javascript
+const createLocalStorage = key => {
+    const initialValue = localStorage.getItem(key)
+    const ValueContext = createContext(initialValue)
+    const SetterContext = createContext(() => {})
+
+    const useStorage = () => [ValueContext, SetterContext].map(useContext)
+
+    const Provider = ({children}) => {
+        const [value, setValue] = useState(initialValue)
+
+        useEffect(
+            () => {
+                console.log('effect', value)
+                localStorage.setItem(key, value)
+            },
+            [value],
+        )
+
+        return (
+            <ValueContext.Provider value={value}>
+                <SetterContext.Provider value={setValue}>
+                    {children}
+                </SetterContext.Provider>
+            </ValueContext.Provider>
+        )
+    }
+
+    return [Provider, useStorage]
+}
+```
+`[1]`: https://reactjs.org/docs/hooks-faq.html#how-to-avoid-passing-callbacks-down
+`[2]`: https://reactjs.org/docs/context.html#updating-context-from-a-nested-component
+`[3]`: https://codesandbox.io/s/0yzjr8vnrv
+![hlcecpq](https://user-images.githubusercontent.com/8649362/51789871-bea63f80-2174-11e9-9288-151510494a7e.gif)",question,bug
+2026-03-06 06:40:20,"[21, 22, 66, 130, 173, 239, 324, 379]",`suppressHydrationWarning` is not taken into account in production builds in React 18,"React version: 18
+1. Clone https://github.com/Avansai/next-multilingual
+2. run: npm install
+3. run: npm build
+4. run: npm run start-example-build
+5. Go to the following URL: http://localhost:3000/fr-ca/tests/routes-dynamiques/123
+6. Open the console log: no errors
+7. Kill the app, and update the react and react-dom package to version 18.0
+8. Re-run steps 2 to 5
+9. Open the console log: lots of hydration errors #[425](https://reactjs.org/docs/error-decoder.html?invariant=425), #[418](https://reactjs.org/docs/error-decoder.html?invariant=418) and #[423](https://reactjs.org/docs/error-decoder.html?invariant=423).
+https://github.com/Avansai/next-multilingual
+Using React 18, the tests are failing because of the errors being thrown in the console.
+<img width=""935"" alt=""image"" src=""https://user-images.githubusercontent.com/6453322/161457567-c0777ffa-a3e5-4e21-80bc-51619942299f.png"">
+I confirmed this was related to `suppressHydrationWarning` because as soon as I removed the following code from: https://github.com/Avansai/next-multilingual/blob/main/example/pages/tests/dynamic-routes/%5Bid%5D.tsx#L37
+```jsx
+<tr>
+  <td>{messages.format('rowLocalizedWithAsPath')}</td>
+  {/* Adding `suppressHydrationWarning` until
+  https://github.com/vercel/next.js/issues/32772 is resolved */}
+  <td suppressHydrationWarning={true}>{asPath}</td>
+</tr>
+```
+The errors stop. However, I could not find any mention that `suppressHydrationWarning` was no longer supported with React 18 and these errors are only triggered on builds, not in dev mode (which is why I am opening this issue)
+`suppressHydrationWarning`  should prevent these errors from being thrown.",bug,bug
+2026-03-06 06:40:20,"[21, 22, 66, 130, 173, 239, 324, 379]",Suspense: timeout expiration and siblings rendering issues,"Code for reproducing is [here](https://github.com/alexeyraspopov/react-suspense-sandbox/tree/cb3b60be69523de8f720a474c965face2b521b9b). I've also deployed an example to Zeit Now: https://suspense-fpwoufdzfv.now.sh/.
+This is a basic example of using React Suspense and Simple Cache Provider. Postponing text rendering and showing loading spinners when it's necessary.
+I can see my use of `<Timeout />` doesn't really care about `ms` I'm passing — it always become expired right after the render. You can open a page and the loading bar appears immediately despite `1000ms` delay that it has.
+There is content that is placed next to an async component (the one that's going to be suspended).
+https://github.com/alexeyraspopov/react-suspense-sandbox/blob/cb3b60be69523de8f720a474c965face2b521b9b/src/index.js#L51-L56
+Looking at React Suspense tests, it is assumed that sibling elements can be rendered in any way.
+`<Timeout />` component only shows placehold when expired, sibling content is shown even if an async component was suspended.
+I built sources for `react`, `react-dom`, and `simple-cache-provider` from the current master, updating `enableSuspense` flag. I also used `<unstable_AsyncMode />` but it didn't seem to make any difference.
+I overall was really satisfied with this feature. I hope I did the code correctly so it shows the real bug.",question,feature
+2026-03-06 06:40:20,"[21, 22, 66, 130, 173, 239, 324, 379]",Unexpected interleaving of subtree/parent lifecycle methods,"Repro: https://jsfiddle.net/5t5ua47c/
+In the example, a click handler in the subtree queues an update for both the the subtree and parent components, with the following ordering of lifecycle methods:
+```
+parent will update
+> child will update
+>> subtree will update
+> child did update
+parent did update
+>> subtree did update
+```
+If the parent component unmounts the subtree in `componentDidUpdate` this will cause the subtree to be unmounted by the time that its `componentDidUpdate` method is called (https://jsfiddle.net/v5fk4xvx/1/):
+```
+parent will update
+> child will update
+>> subtree will update
+> child did update
+parent did update (unmount subtree)
+>> subtree will unmount
+>> subtree did update
+```
+Probably this:
+```
+parent will update
+> child will update
+>> subtree will update
+> child did update
+>> subtree did update
+parent did update
+```",bug,bug
+2026-03-06 06:40:21,"[21, 22, 66, 130, 173, 239, 324, 379]","Inputs are uneditable if the ""value"" attribute is present","See here: http://jsfiddle.net/XdNHU/1/
+If an `<input>` element is rendered with its value attribute already present/set, the input seems to be uneditable. I thought it might have been something in handleChange, but I'm not sure.
+Hopefully I'm not just misusing JSX...",question,bug
+2026-03-06 06:40:22,"[21, 22, 66, 130, 173, 239, 324, 379]",Invariant Violation when rendering using both ReactDOM and ReactDOMServer,"Using both ReactDOM.render and ReactDOMServer.render(\w+) causes an invariant violation in React 15.4.1.
+See console on https://jsfiddle.net/martinkadlec/jb7bqg5o/4/
+There is:
+```javascript
+react-dom.js:18121 Warning: Exception thrown by hook while handling onSetChildren: Invariant Violation: Item must have been set
+Invariant Violation: Item must have been set
+    at invariant (https://unpkg.com/react@15.4.1/dist/react-with-addons.js:5175:15)
+```
+Notice that I render completely different components with each of the render methods.
+Some criteria have to be met for the warning to show, like at least two nested components.
+To me it seems like the ReactDOMServer is messing with itemMap in the regular React and the IDs of components doesn't match.",bug,bug
+2026-03-06 06:40:22,"[21, 22, 66, 130, 173, 239, 324, 379]",ReactTextComponent's string props clashes with cloneWithProps,"The effect of this can be seen in this gist which uses react-bootstrap: http://jsfiddle.net/Hhc8z/1/
+Relevant excerpts from the source:
+https://github.com/react-bootstrap/react-bootstrap/blob/master/src/Navbar.jsx#L80
+https://github.com/react-bootstrap/react-bootstrap/blob/master/src/utils/ValidComponentChildren.js#L19
+https://github.com/react-bootstrap/react-bootstrap/blob/master/src/utils/cloneWithProps.js#L149
+I'm trying to fix this in the boostrap lib, but it does seem like a bit of a gotcha anyway.
+Is there a documented way to decide if `cloneWithProps` is safe to do, or is this supposed to just work in the current descriptor scheme of things?",bug,feature
+2026-03-06 06:40:22,"[21, 22, 66, 130, 173, 239, 324, 379]",ReactJS setState bug/my fault,"Hello, guys!
+I made an exemple here to see exactly what I'm talking about:
+http://codepen.io/mga/pen/bEyZox
+I used context for the ""storeInput"" function because in my app it passes through more than one component.
+Sorry for the short message but I don't have the best writing english skills and it's more easier for me to show you. If you don't understand something please let me know. Thanks!",question,bug
+2026-03-06 06:40:23,"[21, 22, 66, 130, 173, 239, 324, 379]",Referencing `key` within `React.Children.map` *is* defined.,"This isn't necessarily a bug or a feature, more so asking for why it is implemented as it currently is.
+When inside of a component, `this.key` is undefined, however `child.key` is defined and has a value within `React.Children.map`. I realize these point to different instances, just demonstrating the difference.
+Example:
+```Javascript
+
+class Example extends React.Component {
+  render() {
+    console.log(this.key); // undefined
+    return (
+      <div>
+       {React.Children.map(this.props.children, child => {
+          console.log(child.key); // defined
+          return child;
+       })}
+      </div>
+    )
+  }
+}
+```
+I expect `child.key` to not be readable/writeable within `React.Children.map`, however it is both which seems counterintuitive to the idea that `this.key` is undefined within the component.",question,question
+2026-03-06 06:40:23,"[21, 22, 66, 130, 173, 239, 324, 379]",Opinions on Ionic Reac,"Hello,
+Feasibility of making a project in ionic reaction.
+I am interested in knowing more about Ionic react.
+And I would like to know if it is advisable to do a project with Ionic React.
+How scalable the project would be.
+And you can use all the tools that have both ionic and rea, example: camera, maps, notifications, routes, among others.
+I appreciate if you can advise me.
+Thank you",question,question
+2026-03-06 06:40:23,"[21, 22, 66, 130, 173, 239, 324, 379]",Access React component underlying DOM tree,"Form component has ""form field"" children (Input(), Checkbox(), etc) that are validated against some custom rules when form is submitted. Validation works fine.
+If the form is invalid, I would like to scroll the page to the first invalid element after the form is submitted but unfortunately components do not expose the underlying DOM three (except via the Fiber object) and I cannot get the ""ref"" of any component, which makes scrolling not possible since I don't have the DOM reference.
+I am trying to avoid ref forwarding on ""form field"" components because I would like the Form to handle all validation related code (for encapsulation purposes and in case I want to publish this as a library, for instance).
+react: ""^16.4.0""
+Is there any way to achieve this?",question,feature
+2026-03-06 06:40:23,"[21, 22, 66, 130, 173, 239, 324, 379]",Help with JSX -> JS transform without nodejs,"I'd like to convert JSX files to JS files on a Linux machine which has no (direct) internet access. All of the examples talk about running npm, which obviously won't work in this case. Are there any  alternatives for me?
+Ideally I would like to use the watch method of the jsx  executable to do all of the heacy lifting behind the scenes and before a Maven task builds my web app.",question,question
+2026-03-06 06:40:24,"[21, 22, 66, 130, 173, 239, 324, 379]",[Feature Suggestion] Publish react also as ES2015 code,"React is published to NPM only as ES5 code
+Publish react also in es2015, with es2015 entry point in the package.json
+Motivation: Performance. leverage the targeted client native ES features
+Its part of the angular 4 package format
+https://docs.google.com/document/d/1CZC2rcpxffTDfRDs6p1cfbmKNLA6x5O-NtkJglDaBVs/edit#heading=h.jt2mvxhyrshv
+http://2ality.com/2017/04/setting-up-multi-platform-packages.html",feature,feature
+2026-03-06 06:40:24,"[21, 22, 66, 130, 173, 239, 324, 379]",is sending state of current component as a parameter to another external method possible ??,<Button onClick={this.props.handleSubmit(this.state)}> SUBMIT </button>,question,question
+2026-03-06 06:40:25,"[21, 22, 66, 130, 173, 239, 324, 379]",[Fiber] returning functions from render does not throw,"https://jsfiddle.net/3apqnhmw/
+```jsx
+class Foo extends React.Component {
+  render() {
+     return <div>Foo</div>
+  }
+}
+
+class App extends React.Component {
+  render() {
+    return Foo
+  }
+}
+```
+When `App` returns `Foo` instead of `<Foo />` accidentally, Fiber does not catch this.",bug,feature
+2026-03-06 06:40:25,"[21, 22, 66, 130, 173, 239, 324, 379]",v17 DEV mode slowness during effect traversal,"React version: 17.0.0.rc2
+1. Install in dev mode
+2. all events, click, onBlur all of them are too slowly every time you click in a input or something freeze the browser
+And even more if you open the chrome dev tools or others becomes more slow",bug,bug
+2026-03-06 06:40:26,"[21, 22, 66, 130, 173, 239, 324, 379]",How to distinguish if a component is the owner or the ownee?,Title is self explanatory. I'm asking this due to `@_owner` removal. Thank you.,question,question
+2026-03-06 06:40:27,"[21, 22, 66, 130, 173, 239, 324, 379]","does ""unmount"" mean ""garbage collect""? I'd like to persist state between renderings, but seems not possible",Sometimes I switch tabs within my application or whatnot (I'm using react-bootstrap) and components will mount and unmount as they wish. But they might have updated `state` that I don't want to lose. Am I overlooking a feature that lets me do this?,question,question
+2026-03-06 06:40:27,"[21, 22, 66, 130, 173, 239, 324, 379]",TypeError: Cannot read property 'state' of undefined with create-react-class,"I am currently attempting to create a button which is red with the text ""Yes"" that when you click on it the button changes to a green color with the text ""Confirm?"" before the final stage in which an action takes place. Where I am currently at is defining `buttonColor` as a state which changes on the click of the button; the initial color should be `#FD8F83` and the final color after the click should be `#A4D87C`. However, I am currently getting the error ""TypeError: Cannot read property 'state' of undefined"" pointing to the `style={{backgroundColor: this.state.buttonColor}} ` line whenever the code is compiled on the webpage.
+**Defining initial state and behavior on click:**
+```
+getInitialState: function() {
+    	return {
+    		buttonColor: ""#FD8F83""
+    	};
+},
+handleClick(color) {
+    	this.setState({
+		buttonColor: color
+	}); 
+}
+```
+**Code inside table in render():**
+```
+<td>
+	<button 
+		className=""removeButton"" 
+		style={{backgroundColor: this.state.buttonColor}} 
+		onClick={function(){this.handleClick(""#A4D87C"")}}>
+		Yes
+	</button>
+</td>
+```
+Does anyone have any ideas why this is? I am brand new to React so I apologize if it's obvious. I also learned React using createClass so I've been trying to piece together how to make this work with the new `create-react-class` package. Any advice is greatly appreciated!
+React: `^16.2.0`
+Chrome: `Version 63.0.3239.132 (Official Build) (64-bit)`",question,question
+2026-03-06 06:40:27,"[21, 22, 66, 130, 173, 239, 324, 379]",unexpected ContextConsumer or ContextProvider behavior,"When use two or more contexts that created by `createContext`,in the child-tree of cxt2.Provider,i use cxt1.Provider to set a new context of cxt1,i expect only the child consumer got the new cxt1,but the result is that the cxt2.Provider's next sibling's child-tree got an unexpected cxt2.Provider's new context
+[createContext issue](https://codesandbox.io/s/4j3m6l2l3w)
+ContextProvider only affect the children node.
+React 16.3.0-alpha.0",bug,feature
+2026-03-06 06:40:28,"[21, 22, 66, 130, 173, 239, 324, 379]","React 18.3 warning says to import `act` from `react`, only `unstable_act` exists","In the newly released 18.3.0 release, if you try to use the `act` function from `react-dom/test-utils`, you will get the following warning:
+> Import `act` from `react` instead of `react-dom/test-utils`
+However, the 18.3.0 release only ships `unstable_act`, not `act`. The react 19 beta seems to have renamed to `act`.
+I feel the warning should either tell you to import from `unstable_act`, _or_ the `act` export should actually exist, even if aliased to `unstable_act` internally
+React version: 18.3.0
+1. On react + react-dom@18.3.0, import and use `act` from `react-dom/test-utils`.
+2. See warning
+3. Try to import `act` from react@18.3.0
+Link to code example: [https://codesandbox.io/p/sandbox/intelligent-chandrasekhar-p9xk7h](https://codesandbox.io/p/sandbox/intelligent-chandrasekhar-p9xk7h?file=%2Fsrc%2Ftest.js%3A6%2C1&layout=%257B%2522sidebarPanel%2522%253A%2522EXPLORER%2522%252C%2522rootPanelGroup%2522%253A%257B%2522direction%2522%253A%2522horizontal%2522%252C%2522contentType%2522%253A%2522UNKNOWN%2522%252C%2522type%2522%253A%2522PANEL_GROUP%2522%252C%2522id%2522%253A%2522ROOT_LAYOUT%2522%252C%2522panels%2522%253A%255B%257B%2522type%2522%253A%2522PANEL_GROUP%2522%252C%2522contentType%2522%253A%2522UNKNOWN%2522%252C%2522direction%2522%253A%2522vertical%2522%252C%2522id%2522%253A%2522clvfsslh200063b6joqedrppd%2522%252C%2522sizes%2522%253A%255B100%252C0%255D%252C%2522panels%2522%253A%255B%257B%2522type%2522%253A%2522PANEL_GROUP%2522%252C%2522contentType%2522%253A%2522EDITOR%2522%252C%2522direction%2522%253A%2522horizontal%2522%252C%2522id%2522%253A%2522EDITOR%2522%252C%2522panels%2522%253A%255B%257B%2522type%2522%253A%2522PANEL%2522%252C%2522contentType%2522%253A%2522EDITOR%2522%252C%2522id%2522%253A%2522clvfsslh200023b6jmbhhjfwu%2522%257D%255D%257D%252C%257B%2522type%2522%253A%2522PANEL_GROUP%2522%252C%2522contentType%2522%253A%2522SHELLS%2522%252C%2522direction%2522%253A%2522horizontal%2522%252C%2522id%2522%253A%2522SHELLS%2522%252C%2522panels%2522%253A%255B%257B%2522type%2522%253A%2522PANEL%2522%252C%2522contentType%2522%253A%2522SHELLS%2522%252C%2522id%2522%253A%2522clvfsslh200033b6jhy11k8p6%2522%257D%255D%252C%2522sizes%2522%253A%255B100%255D%257D%255D%257D%252C%257B%2522type%2522%253A%2522PANEL_GROUP%2522%252C%2522contentType%2522%253A%2522DEVTOOLS%2522%252C%2522direction%2522%253A%2522vertical%2522%252C%2522id%2522%253A%2522DEVTOOLS%2522%252C%2522panels%2522%253A%255B%257B%2522type%2522%253A%2522PANEL%2522%252C%2522contentType%2522%253A%2522DEVTOOLS%2522%252C%2522id%2522%253A%2522clvfsslh200053b6jdt7slm5u%2522%257D%255D%252C%2522sizes%2522%253A%255B100%255D%257D%255D%252C%2522sizes%2522%253A%255B50%252C50%255D%257D%252C%2522tabbedPanels%2522%253A%257B%2522clvfsslh200023b6jmbhhjfwu%2522%253A%257B%2522tabs%2522%253A%255B%257B%2522id%2522%253A%2522clvfsslh200013b6j2ebpwwn7%2522%252C%2522mode%2522%253A%2522permanent%2522%252C%2522type%2522%253A%2522FILE%2522%252C%2522filepath%2522%253A%2522%252Fsrc%252Findex.js%2522%252C%2522state%2522%253A%2522IDLE%2522%257D%252C%257B%2522id%2522%253A%2522clvfst1ny003t3b6janff2rkm%2522%252C%2522mode%2522%253A%2522permanent%2522%252C%2522type%2522%253A%2522FILE%2522%252C%2522initialSelections%2522%253A%255B%257B%2522startLineNumber%2522%253A5%252C%2522startColumn%2522%253A18%252C%2522endLineNumber%2522%253A5%252C%2522endColumn%2522%253A18%257D%255D%252C%2522filepath%2522%253A%2522%252Fpackage.json%2522%252C%2522state%2522%253A%2522IDLE%2522%257D%252C%257B%2522id%2522%253A%2522clvfszp0000023b6ijbh4phsw%2522%252C%2522mode%2522%253A%2522permanent%2522%252C%2522type%2522%253A%2522FILE%2522%252C%2522initialSelections%2522%253A%255B%257B%2522startLineNumber%2522%253A6%252C%2522startColumn%2522%253A1%252C%2522endLineNumber%2522%253A6%252C%2522endColumn%2522%253A1%257D%255D%252C%2522filepath%2522%253A%2522%252Fsrc%252Ftest.js%2522%252C%2522state%2522%253A%2522IDLE%2522%257D%255D%252C%2522id%2522%253A%2522clvfsslh200023b6jmbhhjfwu%2522%252C%2522activeTabId%2522%253A%2522clvfszp0000023b6ijbh4phsw%2522%257D%252C%2522clvfsslh200053b6jdt7slm5u%2522%253A%257B%2522id%2522%253A%2522clvfsslh200053b6jdt7slm5u%2522%252C%2522activeTabId%2522%253A%2522clvfsxdrw00fk3b6iv08mk34s%2522%252C%2522tabs%2522%253A%255B%257B%2522type%2522%253A%2522UNASSIGNED_PORT%2522%252C%2522port%2522%253A0%252C%2522id%2522%253A%2522clvfsxdrw00fk3b6iv08mk34s%2522%252C%2522mode%2522%253A%2522permanent%2522%252C%2522path%2522%253A%2522%252F%2522%257D%255D%257D%252C%2522clvfsslh200033b6jhy11k8p6%2522%253A%257B%2522tabs%2522%253A%255B%255D%252C%2522id%2522%253A%2522clvfsslh200033b6jhy11k8p6%2522%257D%257D%252C%2522showDevtools%2522%253Atrue%252C%2522showShells%2522%253Afalse%252C%2522showSidebar%2522%253Atrue%252C%2522sidebarPanelSize%2522%253A15%257D)
+`act` does not exist, warning tells you to use it
+`act` exists, warning tells you to use it _OR_ warning tells you to use `unstable_act`",bug,feature
+2026-03-06 06:40:28,"[21, 22, 66, 130, 173, 239, 324, 379]",Issue with ReactCSSTransitionGroup,"I'm getting this error
+Uncaught Invariant Violation: addComponentAsRefTo(...): Only a ReactOwner can have refs. You might be adding a ref to a component that was not created inside a component's `render` method, or you have multiple copies of React loaded (details: https://fb.me/react-refs-must-have-owner).
+after installing ReactCSSTransitionGroup and It seems that I have only one copy of react running.
+I'm using gulp and browserify to package the app.
++-- babel-preset-react@6.3.13
+| +-- babel-plugin-transform-react-display-name@6.3.13
+| +-- babel-plugin-transform-react-jsx@6.3.13
+| | `-- babel-helper-builder-react-jsx@6.3.13
+|`-- babel-plugin-transform-react-jsx-source@6.3.13
++-- eslint-plugin-react@3.15.0
++-- formsy-react@0.17.0
++-- react@0.14.6
++-- react-addons-css-transition-group@0.14.6
++-- react-dom@0.14.6
++-- react-router@1.0.3",question,bug
+2026-03-06 06:40:29,"[21, 22, 66, 130, 173, 239, 324, 379]",React.renderComponentToStaticMarkup doesn't generate selected attributes from value/defaultValue,"I'm using static markup for unit testing [newforms](https://github/insin/newforms) output and I'd also like to support using it to render forms as static HTML.
+Adding a `value` or `defaultValue` to a `<select>` doesn't generate static HTML with the appropriate `selected` attributes. However, they do get generated if you manually add them to `<option>` components, but then you get warning messages in the console when using the development build of React.
+Is it possible to support both use cases without manually setting `selected` attributes, or will I just have to live with the warnings? :)
+JSFiddle showing `<select>` static HTML output: http://jsfiddle.net/insin/2tvb7/3/",bug,feature
+2026-03-06 06:40:29,"[21, 22, 66, 130, 173, 239, 324, 379]",Sluggish scrolling when rendering table with large dataset in React,"So I'm creating an application with real-time streaming data in a table using react (v16.1.1). The number of rows shown at a time can be rather large (400+ rows) and when those situations occur, the scrolling behavior on browsers (desktop & mobile) really takes a hit and staggers when attempting to browse the content. Has anybody experienced this kind of scrolling behavior when rendering large data sets in a table?
+I'm expecting React to be able to efficiently draw/redraw these elements with ease but that doesn't appear to be the case. I tried using JSFiddle to recreate the scenario but did not have much success.",question,bug
+2026-03-06 06:40:30,"[21, 22, 66, 130, 173, 239, 324, 379]",Extend nested default props instead of overwriting,"It's very convenient to have props in a nested structure. However...
+Let's assume I have some default props:
+```
+getDefaultProps: function() {
+    return {
+        aaa: true,
+        bbb: true,
+        ccc: {
+            first: false,
+            second: false,
+            third: false
+        }
+    };
+}
+```
+Now, if I initialize the component giving it these props:
+```
+{
+    ccc: {
+        first: true
+    }
+}
+```
+...the component won't get ccc.second or ccc.third at all. The preferred result would of course be:
+```
+{
+    aaa: true,
+    bbb: true,
+    ccc: {
+        first: true,
+        second: false,
+        third: false
+    }
+}
+```
+Or perhaps make the behaviour selectable by adding a PropTypes option, like:
+```
+.isRequired.useDefault
+```",feature,feature
+2026-03-06 06:40:30,"[21, 22, 66, 130, 173, 239, 324, 379]",React 16.0.0-alpha 7 does not bundle correctly in a project using rollup,"When using rollup in a project that imports the latest React `16.0.0-alpha7`, the bundle ends up containing both `react-development.js` and `react-production.min.js`, and the file size is unnecessarily large.
+My guess - This happening because the entry point of react was changed recently to
+```js
+if (process.env.NODE_ENV === 'production') {
+  module.exports = require('./cjs/react.production.min.js');
+} else {
+  module.exports = require('./cjs/react.development.js');
+}
+```
+and rollup apparently[ cannot eliminate exports in dead branches](https://github.com/rollup/rollup/issues/208) even when replacing `process.env.NODE_ENV` with production.
+Uglify also cannot remove the dead code, because rollup seems to hoist `require`d stuff to the top level.
+**Online Demo**: Try building `react@next` using [this tool](https://cost-of-modules.herokuapp.com) that uses rollup to report package sizes. Compare that to searching for just `react`.
+1) Import react in any project that uses rollup to bundle.
+2) Use [rollup-plugin-replace] (https://github.com/rollup/rollup-plugin-replace) to replace `process.env.NODE_ENV` with production.
+3) Use `rollup-plugin-node-resolve`,  `rollup-plugin-commonjs` and `uglifyjs` plugins  so that rollup understands commonjs exports and minifies stuff.
+4) Check the bundle size, it is 47.5kB.
+Size should be much smaller.
+The size is fine when using `15.4.2` because the entry point reads as
+```js
+'use strict';
+
+module.exports = require('./lib/React');
+```",bug,feature
+2026-03-06 06:40:31,"[21, 22, 66, 130, 173, 239, 324, 379]","Uncaught Error: ""Unable to find element"" when updating the innerhtml of an Option element.","My co-worker and I were caught off-guard by this behaviour yesterday, and I wanted to see if this is a possible React bug or some misunderstanding on our part.
+Basically it seems having more than one part to the innerhtml of an option element and then trying to update one of them will throw the error:
+```
+""Uncaught Error: Invariant Violation: findComponentRoot(..., .0.1.$0.0): Unable to find element.
+This probably means the DOM was unexpectedly mutated (e.g., by the browser), usually due to forgetting a <tbody> when using tables, nesting tags like <form>, <p>, or <a>, or using non-SVG elements in an <svg> parent.
+Try inspecting the child nodes of the element with React ID ``.""
+```
+We have worked around it by combining the parts into a single variable and then using that.
+Here is the jsfiddle demonstrating the error: http://jsfiddle.net/johnarnold212675186/14te87oy/
+Here is what we've done as a workaround: http://jsfiddle.net/johnarnold212675186/zqgjjwaL/
+Am I doing something wrong, or is this something that should be possible with React?",bug,bug
+2026-03-06 06:40:31,"[21, 22, 66, 130, 173, 239, 324, 379]",Uncaught Error: Unexpected object passed to ReactTestInstance constructor (tag: 13). This is probably a bug in React.,"Hello,
+I'm testing v16.3.0 and I'm getting this warning:
+```
+Warning: Detected multiple renderers concurrently rendering the same context provider. This is currently unsupported 
+```
+My use case is that I wanted to render React Test Renderer (for ex) from a Component in an another (ReactDOM) renderer but it does not seem to work - I wanted to use same Provider in both containers.
+I thought `React.createContext` create objects with no state and could be shared across renderers / Fiber containers.. Is there workaround for this? Are there any thoughts on this, Is this a definite behaviour?
+Following the warning, I eventually get the error message which I believe is related to the warning:
+```
+Uncaught Error: Unexpected object passed to ReactTestInstance constructor (tag: 13). This is probably a bug in React.
+```
+thank you for any guidance :)",feature,bug
+2026-03-06 06:40:32,"[21, 22, 66, 130, 173, 239, 324, 379]",Refs should be updated even if shouldComponentUpdate returns false,I'm reordering a list of components and changing their refs (to refer to their index) but nothing else about them -- would be nice if the refs updated which they don't appear to do currently.,bug,feature
+2026-03-06 06:40:32,"[21, 22, 66, 130, 173, 239, 324, 379]",Optimizing componentWillReceiveProps and shouldComponentUpdate,"React component lifecycle dictates that when new props roll in, `componentWillReceiveProps` gets called, where you can calculate the new state and set it without a second cycle. Afterwards, shouldComponentUpdate gets called and we can compare props and state of last cycle with the next one.
+However, if state is a product of the props, it makes more sense to check whether the props have changed before calculating the state, so unnecessary calculations can be avoided. This produces some ugly looking code where `componentWillReceiveProps` first runs the code that would otherwise be in `shouldComponentUpdate` and based on that result sets a new state, or terminates.
+Simplified Example:
+```
+componentWillReceiveProps: function (nextProps) {
+    if (nextProps === this.props) {
+        return;
+    }
+
+    // Calculate new state
+    this.setState(...);
+},
+
+shouldComponentUpdate: function (nextProps, nextState) {
+    return this.state !== nextState;
+}
+```
+Is there a cleaner way of approaching this where no resources are wasted on unnecessary state calculations?",question,feature
+2026-03-06 06:40:33,"[21, 22, 66, 130, 173, 239, 324, 379]",15.4 breaks default param behavior on componentDidMount in production build,"only when `NODE_ENV=production`: `null` is being passed as first argument to `componentDidMount`. this becomes an issue when a default param is specified for `componentDidMount`.
+from the backtrace from the componentDidMount call it seems like the difference between 15.3 and 15.4 is the extra `arg` argument in this line:
+https://github.com/facebook/react/blob/308e0b77863071f31cff7aec74e359603526274e/src/renderers/shared/stack/reconciler/CallbackQueue.js#L73
+**Repro**
+https://github.com/kentor/throwaway/tree/master/react-15.4-breaks-default-param
+clone the project then cd into it
+```
+cd react-15.4-breaks-default-param
+yarn
+npm run dev
+```
+open  localhost:9966 (with an es6 supported browser) and open the console, it should log a message. kill the wzrd process
+then run
+```
+npm run prod
+```
+then refresh localhost:9966, the console should log null
+they should either both log `this should be logged` or they should both log `null`. development build and production build shouldn't differ in this regard
+15.4. Everything was OK in 15.3",bug,bug
+2026-03-06 06:40:33,"[21, 22, 66, 130, 173, 239, 324, 379]",How to get the index of clicked element?,"I have some list item, and I want know which one is clicked by user,
+so I set onClik on every `<li>` item,
+and I user `event.target` to get the node clicked,
+but I get this issue, my `<li>` items has children nodes,
+when user click the children inside the `<li>` element,
+`event.target` is not the element I want, how do I fix it?
+my code:
+``` js
+var React = require('react');
+var ReactDOM = require('react-dom');
+
+var CC = React.createClass({
+
+    handleClick: function(e) {
+        console.log(e.target.getAttribute('data-key'));
+    },
+
+    render: function() {
+        var s = {
+            border: '1px solid #ddd',
+            display: 'block',
+            padding: '10px'
+        };
+        var items = this.props.arr.map(function(a, i) {
+            return (
+                <li key={i} onClick={this.handleClick} style={s} data-key={i}>
+                    <img src=""images/joy.png""/>
+                </li>
+                );
+        }, this);
+
+        return (
+            <ul >
+                {items}
+            </ul>
+            );
+    }
+});
+
+
+var App = React.createClass({
+    getInitialState: function () {
+        return {
+            arr: [1,2,3]
+        };
+    },
+
+    render: function() {
+        return (
+            <div>
+                <CC arr={this.state.arr}/>
+            </div>
+        );
+    }
+});
+
+ReactDOM.render(<App/>, document.getElementById('app'));
+```
+when user click the `<img>` inside `<li>`,
+`e.target.getAttribute('data-key')` return `null`
+I do can fix it by add the `data-key` attribute to all of `<li>` element's children,
+like:
+``` js
+var items = this.props.arr.map(function(a, i) {
+    return (
+        <li key={i} onClick={this.handleClick} style={s} data-key={i}>
+            <img src=""images/joy.png"" data-key={i} />
+        </li>
+        );
+}, this);
+```
+but I don't think it is a elegant way.",question,question
