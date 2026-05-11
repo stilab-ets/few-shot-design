@@ -1,2 +1,0 @@
-Timestamp,Repo,Model,FewShot_Count,macro_f1,Token_Count
-2026-03-07T07:54:41.101537+00:00,microsoft_vscode,meta-llama/Llama-3.2-3B-Instruct,0,0.15902124473825466,84

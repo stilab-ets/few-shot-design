@@ -1,0 +1,13 @@
+Timestamp,Repo,FewShot_Count,Individual,Accuracy,Token_Count
+2026-03-29 23:59:49.002114,bitcoin_bitcoin,1,per_instance_selection,0.7428571428571429,136
+2026-03-30 00:00:19.153129,bitcoin_bitcoin,2,per_instance_selection,0.7142857142857143,496
+2026-03-30 00:00:38.158425,bitcoin_bitcoin,3,per_instance_selection,0.6761904761904762,685
+2026-03-30 00:00:54.245629,bitcoin_bitcoin,4,per_instance_selection,0.6761904761904762,920
+2026-03-30 00:01:22.684494,bitcoin_bitcoin,6,per_instance_selection,0.7047619047619048,2400
+2026-03-30 00:01:47.400613,bitcoin_bitcoin,8,per_instance_selection,0.7428571428571429,2881
+2026-03-30 00:02:18.038264,bitcoin_bitcoin,10,per_instance_selection,0.7047619047619048,4037
+2026-03-30 00:02:48.536620,bitcoin_bitcoin,12,per_instance_selection,0.7142857142857143,5641
+2026-03-30 00:05:10.646781,bitcoin_bitcoin,16,per_instance_selection,0.7523809523809524,6829
+2026-03-30 00:08:58.572046,bitcoin_bitcoin,20,per_instance_selection,0.780952380952381,8768
+2026-03-30 00:13:54.216478,bitcoin_bitcoin,24,per_instance_selection,0.7523809523809524,9963
+2026-03-30 00:20:24.155874,bitcoin_bitcoin,32,per_instance_selection,0.7619047619047619,12008

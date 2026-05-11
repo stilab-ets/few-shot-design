@@ -1,2 +1,0 @@
-Timestamp,Repo,Model,FewShot_Count,macro_f1,Token_Count
-2026-03-07T07:54:17.301436+00:00,opencv_opencv,meta-llama/Llama-3.2-3B-Instruct,0,0.10777922642329422,84

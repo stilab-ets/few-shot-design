@@ -1,0 +1,13 @@
+Timestamp,Repo,FewShot_Count,Individual,Accuracy,Token_Count
+2026-03-30 02:21:07.341039,opencv_opencv,1,per_instance_selection,0.6,436
+2026-03-30 02:21:43.209570,opencv_opencv,2,per_instance_selection,0.6153846153846154,734
+2026-03-30 02:22:32.492102,opencv_opencv,3,per_instance_selection,0.6538461538461539,1027
+2026-03-30 02:23:45.863625,opencv_opencv,4,per_instance_selection,0.676923076923077,1455
+2026-03-30 02:25:30.441825,opencv_opencv,6,per_instance_selection,0.7230769230769231,2396
+2026-03-30 02:27:37.515348,opencv_opencv,8,per_instance_selection,0.7461538461538462,2826
+2026-03-30 02:30:15.808792,opencv_opencv,10,per_instance_selection,0.7307692307692307,3650
+2026-03-30 02:33:25.270493,opencv_opencv,12,per_instance_selection,0.7538461538461538,4243
+2026-03-30 02:37:28.681954,opencv_opencv,16,per_instance_selection,0.8076923076923077,6625
+2026-03-30 02:42:08.898671,opencv_opencv,20,per_instance_selection,0.8307692307692308,9315
+2026-03-30 02:47:18.815496,opencv_opencv,24,per_instance_selection,0.7923076923076923,10749
+2026-03-30 02:53:48.955227,opencv_opencv,32,per_instance_selection,0.7769230769230769,18176

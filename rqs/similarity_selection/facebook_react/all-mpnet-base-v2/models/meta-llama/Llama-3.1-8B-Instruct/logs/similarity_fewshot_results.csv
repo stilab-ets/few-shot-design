@@ -1,0 +1,13 @@
+Timestamp,Repo,FewShot_Count,Individual,Accuracy,Token_Count
+2026-03-29 23:57:57.650692,facebook_react,1,per_instance_selection,0.5102040816326531,249
+2026-03-29 23:58:02.212945,facebook_react,2,per_instance_selection,0.46938775510204084,337
+2026-03-29 23:58:07.121012,facebook_react,3,per_instance_selection,0.4897959183673469,477
+2026-03-29 23:58:12.356075,facebook_react,4,per_instance_selection,0.5306122448979592,596
+2026-03-29 23:58:18.908646,facebook_react,6,per_instance_selection,0.5306122448979592,960
+2026-03-29 23:58:25.192296,facebook_react,8,per_instance_selection,0.5102040816326531,1458
+2026-03-29 23:58:31.745586,facebook_react,10,per_instance_selection,0.5306122448979592,2086
+2026-03-29 23:58:38.564728,facebook_react,12,per_instance_selection,0.5714285714285714,2450
+2026-03-29 23:58:48.418470,facebook_react,16,per_instance_selection,0.5306122448979592,4000
+2026-03-29 23:58:58.826571,facebook_react,20,per_instance_selection,0.5714285714285714,5086
+2026-03-29 23:59:09.960017,facebook_react,24,per_instance_selection,0.5510204081632653,6154
+2026-03-29 23:59:27.153379,facebook_react,32,per_instance_selection,0.5918367346938775,8790

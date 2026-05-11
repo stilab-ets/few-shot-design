@@ -1,0 +1,13 @@
+Timestamp,Repo,FewShot_Count,Individual,Accuracy,Token_Count
+2026-03-30 05:36:28.909633,tensorflow_tensorflow,1,per_instance_selection,0.5066666666666667,348
+2026-03-30 05:36:51.214311,tensorflow_tensorflow,2,per_instance_selection,0.5,649
+2026-03-30 05:37:16.425257,tensorflow_tensorflow,3,per_instance_selection,0.48,854
+2026-03-30 05:37:41.370398,tensorflow_tensorflow,4,per_instance_selection,0.47333333333333333,1197
+2026-03-30 05:38:19.212266,tensorflow_tensorflow,6,per_instance_selection,0.4866666666666667,1572
+2026-03-30 05:39:01.705177,tensorflow_tensorflow,8,per_instance_selection,0.49333333333333335,1945
+2026-03-30 05:40:17.564343,tensorflow_tensorflow,10,per_instance_selection,0.48,3146
+2026-03-30 05:43:00.820265,tensorflow_tensorflow,12,per_instance_selection,0.5133333333333333,4832
+2026-03-30 05:46:34.051068,tensorflow_tensorflow,16,per_instance_selection,0.5066666666666667,8163
+2026-03-30 05:51:03.074781,tensorflow_tensorflow,20,per_instance_selection,0.49333333333333335,9436
+2026-03-30 05:56:33.688964,tensorflow_tensorflow,24,per_instance_selection,0.49333333333333335,13029
+2026-03-30 06:04:09.563525,tensorflow_tensorflow,32,per_instance_selection,0.5066666666666667,33634

@@ -1,0 +1,13 @@
+Timestamp,Repo,FewShot_Count,Individual,Accuracy,Token_Count
+2026-03-30 03:36:41.128503,microsoft_vscode,1,per_instance_selection,0.46411483253588515,149
+2026-03-30 03:38:00.947321,microsoft_vscode,2,per_instance_selection,0.47368421052631576,297
+2026-03-30 03:39:42.365657,microsoft_vscode,3,per_instance_selection,0.47368421052631576,514
+2026-03-30 03:41:45.720370,microsoft_vscode,4,per_instance_selection,0.5382775119617225,695
+2026-03-30 03:44:36.808279,microsoft_vscode,6,per_instance_selection,0.583732057416268,1373
+2026-03-30 03:48:13.994366,microsoft_vscode,8,per_instance_selection,0.6626794258373205,1896
+2026-03-30 03:52:37.482487,microsoft_vscode,10,per_instance_selection,0.6626794258373205,2055
+2026-03-30 03:57:46.877033,microsoft_vscode,12,per_instance_selection,0.6674641148325359,2333
+2026-03-30 04:04:23.854982,microsoft_vscode,16,per_instance_selection,0.7272727272727273,3060
+2026-03-30 04:12:29.893893,microsoft_vscode,20,per_instance_selection,0.7296650717703349,4107
+2026-03-30 04:22:03.778804,microsoft_vscode,24,per_instance_selection,0.7368421052631579,4831
+2026-03-30 04:34:19.980177,microsoft_vscode,32,per_instance_selection,0.722488038277512,6356
