@@ -1,0 +1,65 @@
+{
+  "repo": "facebook_react",
+  "total_items": 486,
+  "train_items": 388,
+  "test_items": 49,
+  "validation_items": 49,
+  "label_stats": {
+    "full_dataset": {
+      "Type: Question": {
+        "count": 221,
+        "percent": 45.4733
+      },
+      "Type: Bug": {
+        "count": 179,
+        "percent": 36.8313
+      },
+      "Type: Feature Request": {
+        "count": 86,
+        "percent": 17.6955
+      }
+    },
+    "train_dataset": {
+      "Type: Question": {
+        "count": 176,
+        "percent": 45.3608
+      },
+      "Type: Bug": {
+        "count": 143,
+        "percent": 36.8557
+      },
+      "Type: Feature Request": {
+        "count": 69,
+        "percent": 17.7835
+      }
+    },
+    "test_dataset": {
+      "Type: Question": {
+        "count": 23,
+        "percent": 46.9388
+      },
+      "Type: Bug": {
+        "count": 18,
+        "percent": 36.7347
+      },
+      "Type: Feature Request": {
+        "count": 8,
+        "percent": 16.3265
+      }
+    },
+    "validation_dataset": {
+      "Type: Feature Request": {
+        "count": 9,
+        "percent": 18.3673
+      },
+      "Type: Question": {
+        "count": 22,
+        "percent": 44.898
+      },
+      "Type: Bug": {
+        "count": 18,
+        "percent": 36.7347
+      }
+    }
+  }
+}

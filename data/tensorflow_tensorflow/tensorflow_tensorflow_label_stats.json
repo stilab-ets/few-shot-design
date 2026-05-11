@@ -1,0 +1,65 @@
+{
+  "repo": "tensorflow_tensorflow",
+  "total_items": 1500,
+  "train_items": 1200,
+  "test_items": 150,
+  "validation_items": 150,
+  "label_stats": {
+    "full_dataset": {
+      "type:feature": {
+        "count": 335,
+        "percent": 22.3333
+      },
+      "type:bug": {
+        "count": 600,
+        "percent": 40.0
+      },
+      "type:support": {
+        "count": 565,
+        "percent": 37.6667
+      }
+    },
+    "train_dataset": {
+      "type:bug": {
+        "count": 480,
+        "percent": 40.0
+      },
+      "type:feature": {
+        "count": 268,
+        "percent": 22.3333
+      },
+      "type:support": {
+        "count": 452,
+        "percent": 37.6667
+      }
+    },
+    "test_dataset": {
+      "type:support": {
+        "count": 57,
+        "percent": 38.0
+      },
+      "type:feature": {
+        "count": 33,
+        "percent": 22.0
+      },
+      "type:bug": {
+        "count": 60,
+        "percent": 40.0
+      }
+    },
+    "validation_dataset": {
+      "type:feature": {
+        "count": 34,
+        "percent": 22.6667
+      },
+      "type:support": {
+        "count": 56,
+        "percent": 37.3333
+      },
+      "type:bug": {
+        "count": 60,
+        "percent": 40.0
+      }
+    }
+  }
+}

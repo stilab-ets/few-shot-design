@@ -1,0 +1,65 @@
+{
+  "repo": "microsoft_vscode",
+  "total_items": 4185,
+  "train_items": 3348,
+  "test_items": 418,
+  "validation_items": 419,
+  "label_stats": {
+    "full_dataset": {
+      "bug": {
+        "count": 270,
+        "percent": 6.4516
+      },
+      "question": {
+        "count": 3011,
+        "percent": 71.9474
+      },
+      "feature": {
+        "count": 904,
+        "percent": 21.601
+      }
+    },
+    "train_dataset": {
+      "question": {
+        "count": 2409,
+        "percent": 71.9534
+      },
+      "feature": {
+        "count": 723,
+        "percent": 21.595
+      },
+      "bug": {
+        "count": 216,
+        "percent": 6.4516
+      }
+    },
+    "test_dataset": {
+      "feature": {
+        "count": 90,
+        "percent": 21.5311
+      },
+      "question": {
+        "count": 301,
+        "percent": 72.0096
+      },
+      "bug": {
+        "count": 27,
+        "percent": 6.4593
+      }
+    },
+    "validation_dataset": {
+      "question": {
+        "count": 301,
+        "percent": 71.8377
+      },
+      "feature": {
+        "count": 91,
+        "percent": 21.7184
+      },
+      "bug": {
+        "count": 27,
+        "percent": 6.4439
+      }
+    }
+  }
+}

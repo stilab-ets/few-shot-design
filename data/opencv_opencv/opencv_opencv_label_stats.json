@@ -1,0 +1,65 @@
+{
+  "repo": "opencv_opencv",
+  "total_items": 1305,
+  "train_items": 1044,
+  "test_items": 130,
+  "validation_items": 131,
+  "label_stats": {
+    "full_dataset": {
+      "feature": {
+        "count": 102,
+        "percent": 7.8161
+      },
+      "bug": {
+        "count": 170,
+        "percent": 13.0268
+      },
+      "question (invalid tracker)": {
+        "count": 1033,
+        "percent": 79.1571
+      }
+    },
+    "train_dataset": {
+      "question (invalid tracker)": {
+        "count": 826,
+        "percent": 79.1188
+      },
+      "feature": {
+        "count": 82,
+        "percent": 7.8544
+      },
+      "bug": {
+        "count": 136,
+        "percent": 13.0268
+      }
+    },
+    "test_dataset": {
+      "bug": {
+        "count": 17,
+        "percent": 13.0769
+      },
+      "question (invalid tracker)": {
+        "count": 103,
+        "percent": 79.2308
+      },
+      "feature": {
+        "count": 10,
+        "percent": 7.6923
+      }
+    },
+    "validation_dataset": {
+      "question (invalid tracker)": {
+        "count": 104,
+        "percent": 79.3893
+      },
+      "bug": {
+        "count": 17,
+        "percent": 12.9771
+      },
+      "feature": {
+        "count": 10,
+        "percent": 7.6336
+      }
+    }
+  }
+}
