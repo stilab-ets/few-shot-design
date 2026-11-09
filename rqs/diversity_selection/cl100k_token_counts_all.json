@@ -1,0 +1,1242 @@
+{
+    "facebook_react": {
+        "1": {
+            "mean_cl100k_tokens": 477,
+            "min_cl100k_tokens": 477,
+            "max_cl100k_tokens": 477,
+            "n_instances": 1,
+            "indices": [
+                310
+            ],
+            "replacements": 0
+        },
+        "2": {
+            "mean_cl100k_tokens": 982,
+            "min_cl100k_tokens": 982,
+            "max_cl100k_tokens": 982,
+            "n_instances": 1,
+            "indices": [
+                310,
+                267
+            ],
+            "replacements": 0
+        },
+        "3": {
+            "mean_cl100k_tokens": 1460,
+            "min_cl100k_tokens": 1460,
+            "max_cl100k_tokens": 1460,
+            "n_instances": 1,
+            "indices": [
+                136,
+                267,
+                34
+            ],
+            "replacements": 0
+        },
+        "4": {
+            "mean_cl100k_tokens": 906,
+            "min_cl100k_tokens": 906,
+            "max_cl100k_tokens": 906,
+            "n_instances": 1,
+            "indices": [
+                136,
+                210,
+                364,
+                255
+            ],
+            "replacements": 0
+        },
+        "6": {
+            "mean_cl100k_tokens": 2526,
+            "min_cl100k_tokens": 2526,
+            "max_cl100k_tokens": 2526,
+            "n_instances": 1,
+            "indices": [
+                148,
+                255,
+                267,
+                34,
+                364,
+                301
+            ],
+            "replacements": 0
+        },
+        "8": {
+            "mean_cl100k_tokens": 2696,
+            "min_cl100k_tokens": 2696,
+            "max_cl100k_tokens": 2696,
+            "n_instances": 1,
+            "indices": [
+                255,
+                148,
+                270,
+                332,
+                192,
+                364,
+                301,
+                229
+            ],
+            "replacements": 0
+        },
+        "10": {
+            "mean_cl100k_tokens": 2994,
+            "min_cl100k_tokens": 2994,
+            "max_cl100k_tokens": 2994,
+            "n_instances": 1,
+            "indices": [
+                37,
+                367,
+                39,
+                159,
+                197,
+                224,
+                255,
+                12,
+                148,
+                350
+            ],
+            "replacements": 0
+        },
+        "12": {
+            "mean_cl100k_tokens": 3511,
+            "min_cl100k_tokens": 3511,
+            "max_cl100k_tokens": 3511,
+            "n_instances": 1,
+            "indices": [
+                159,
+                242,
+                55,
+                356,
+                102,
+                136,
+                224,
+                255,
+                280,
+                221,
+                158,
+                282
+            ],
+            "replacements": 0
+        },
+        "16": {
+            "mean_cl100k_tokens": 4733,
+            "min_cl100k_tokens": 4733,
+            "max_cl100k_tokens": 4733,
+            "n_instances": 1,
+            "indices": [
+                64,
+                170,
+                136,
+                377,
+                207,
+                366,
+                364,
+                144,
+                229,
+                243,
+                156,
+                332,
+                224,
+                45,
+                121,
+                255
+            ],
+            "replacements": 0
+        },
+        "20": {
+            "mean_cl100k_tokens": 7610,
+            "min_cl100k_tokens": 7610,
+            "max_cl100k_tokens": 7610,
+            "n_instances": 1,
+            "indices": [
+                319,
+                235,
+                348,
+                170,
+                198,
+                217,
+                321,
+                364,
+                121,
+                22,
+                255,
+                56,
+                34,
+                270,
+                351,
+                171,
+                147,
+                298,
+                39,
+                316
+            ],
+            "replacements": 0
+        },
+        "24": {
+            "mean_cl100k_tokens": 6470,
+            "min_cl100k_tokens": 6470,
+            "max_cl100k_tokens": 6470,
+            "n_instances": 1,
+            "indices": [
+                311,
+                144,
+                121,
+                197,
+                45,
+                255,
+                108,
+                367,
+                91,
+                301,
+                101,
+                171,
+                109,
+                148,
+                340,
+                214,
+                350,
+                298,
+                2,
+                210,
+                249,
+                253,
+                378,
+                304
+            ],
+            "replacements": 0
+        },
+        "32": {
+            "mean_cl100k_tokens": 8968,
+            "min_cl100k_tokens": 8968,
+            "max_cl100k_tokens": 8968,
+            "n_instances": 1,
+            "indices": [
+                224,
+                95,
+                276,
+                102,
+                148,
+                228,
+                32,
+                139,
+                135,
+                108,
+                64,
+                335,
+                361,
+                70,
+                165,
+                57,
+                156,
+                314,
+                134,
+                242,
+                214,
+                61,
+                62,
+                170,
+                199,
+                351,
+                210,
+                306,
+                55,
+                338,
+                40,
+                56
+            ],
+            "replacements": 0
+        }
+    },
+    "bitcoin_bitcoin": {
+        "1": {
+            "mean_cl100k_tokens": 1730,
+            "min_cl100k_tokens": 1730,
+            "max_cl100k_tokens": 1730,
+            "n_instances": 1,
+            "indices": [
+                220
+            ],
+            "replacements": 0
+        },
+        "2": {
+            "mean_cl100k_tokens": 1057,
+            "min_cl100k_tokens": 1057,
+            "max_cl100k_tokens": 1057,
+            "n_instances": 1,
+            "indices": [
+                312,
+                794
+            ],
+            "replacements": 0
+        },
+        "3": {
+            "mean_cl100k_tokens": 3176,
+            "min_cl100k_tokens": 3176,
+            "max_cl100k_tokens": 3176,
+            "n_instances": 1,
+            "indices": [
+                691,
+                183,
+                220
+            ],
+            "replacements": 0
+        },
+        "4": {
+            "mean_cl100k_tokens": 8710,
+            "min_cl100k_tokens": 8710,
+            "max_cl100k_tokens": 8710,
+            "n_instances": 1,
+            "indices": [
+                670,
+                417,
+                691,
+                253
+            ],
+            "replacements": 0
+        },
+        "6": {
+            "mean_cl100k_tokens": 10066,
+            "min_cl100k_tokens": 10066,
+            "max_cl100k_tokens": 10066,
+            "n_instances": 1,
+            "indices": [
+                691,
+                417,
+                726,
+                253,
+                670,
+                259
+            ],
+            "replacements": 0
+        },
+        "8": {
+            "mean_cl100k_tokens": 14345,
+            "min_cl100k_tokens": 14345,
+            "max_cl100k_tokens": 14345,
+            "n_instances": 1,
+            "indices": [
+                670,
+                112,
+                75,
+                253,
+                417,
+                726,
+                642,
+                782
+            ],
+            "replacements": 0
+        },
+        "10": {
+            "mean_cl100k_tokens": 10362,
+            "min_cl100k_tokens": 10362,
+            "max_cl100k_tokens": 10362,
+            "n_instances": 1,
+            "indices": [
+                551,
+                259,
+                751,
+                726,
+                417,
+                611,
+                112,
+                782,
+                670,
+                425
+            ],
+            "replacements": 0
+        },
+        "12": {
+            "mean_cl100k_tokens": 13667,
+            "min_cl100k_tokens": 13667,
+            "max_cl100k_tokens": 13667,
+            "n_instances": 1,
+            "indices": [
+                425,
+                670,
+                735,
+                782,
+                440,
+                674,
+                253,
+                417,
+                75,
+                453,
+                513,
+                134
+            ],
+            "replacements": 1
+        },
+        "16": {
+            "mean_cl100k_tokens": 13050,
+            "min_cl100k_tokens": 13050,
+            "max_cl100k_tokens": 13050,
+            "n_instances": 1,
+            "indices": [
+                425,
+                137,
+                166,
+                4,
+                611,
+                259,
+                726,
+                773,
+                751,
+                112,
+                670,
+                417,
+                648,
+                253,
+                820,
+                567
+            ],
+            "replacements": 0
+        },
+        "20": {
+            "mean_cl100k_tokens": 19485,
+            "min_cl100k_tokens": 19485,
+            "max_cl100k_tokens": 19485,
+            "n_instances": 1,
+            "indices": [
+                166,
+                764,
+                253,
+                726,
+                440,
+                644,
+                648,
+                484,
+                586,
+                696,
+                312,
+                552,
+                75,
+                670,
+                782,
+                295,
+                104,
+                566,
+                490,
+                457
+            ],
+            "replacements": 1
+        },
+        "24": {
+            "mean_cl100k_tokens": 18547,
+            "min_cl100k_tokens": 18547,
+            "max_cl100k_tokens": 18547,
+            "n_instances": 1,
+            "indices": [
+                670,
+                112,
+                616,
+                348,
+                282,
+                60,
+                137,
+                160,
+                173,
+                735,
+                75,
+                493,
+                521,
+                517,
+                104,
+                441,
+                611,
+                612,
+                134,
+                636,
+                417,
+                605,
+                329,
+                434
+            ],
+            "replacements": 2
+        },
+        "32": {
+            "mean_cl100k_tokens": 16170,
+            "min_cl100k_tokens": 16170,
+            "max_cl100k_tokens": 16170,
+            "n_instances": 1,
+            "indices": [
+                239,
+                198,
+                417,
+                155,
+                648,
+                112,
+                320,
+                425,
+                735,
+                104,
+                131,
+                133,
+                134,
+                434,
+                816,
+                674,
+                603,
+                68,
+                308,
+                338,
+                266,
+                474,
+                113,
+                47,
+                724,
+                744,
+                636,
+                366,
+                521,
+                517,
+                776,
+                773
+            ],
+            "replacements": 7
+        }
+    },
+    "opencv_opencv": {
+        "1": {
+            "mean_cl100k_tokens": 1772,
+            "min_cl100k_tokens": 1772,
+            "max_cl100k_tokens": 1772,
+            "n_instances": 1,
+            "indices": [
+                407
+            ],
+            "replacements": 0
+        },
+        "2": {
+            "mean_cl100k_tokens": 5094,
+            "min_cl100k_tokens": 5094,
+            "max_cl100k_tokens": 5094,
+            "n_instances": 1,
+            "indices": [
+                10,
+                398
+            ],
+            "replacements": 0
+        },
+        "3": {
+            "mean_cl100k_tokens": 772,
+            "min_cl100k_tokens": 772,
+            "max_cl100k_tokens": 772,
+            "n_instances": 1,
+            "indices": [
+                264,
+                486,
+                543
+            ],
+            "replacements": 0
+        },
+        "4": {
+            "mean_cl100k_tokens": 1590,
+            "min_cl100k_tokens": 1590,
+            "max_cl100k_tokens": 1590,
+            "n_instances": 1,
+            "indices": [
+                421,
+                264,
+                486,
+                219
+            ],
+            "replacements": 0
+        },
+        "6": {
+            "mean_cl100k_tokens": 2547,
+            "min_cl100k_tokens": 2547,
+            "max_cl100k_tokens": 2547,
+            "n_instances": 1,
+            "indices": [
+                115,
+                421,
+                543,
+                486,
+                883,
+                264
+            ],
+            "replacements": 0
+        },
+        "8": {
+            "mean_cl100k_tokens": 4546,
+            "min_cl100k_tokens": 4546,
+            "max_cl100k_tokens": 4546,
+            "n_instances": 1,
+            "indices": [
+                1003,
+                543,
+                738,
+                49,
+                486,
+                421,
+                507,
+                458
+            ],
+            "replacements": 0
+        },
+        "10": {
+            "mean_cl100k_tokens": 7173,
+            "min_cl100k_tokens": 7173,
+            "max_cl100k_tokens": 7173,
+            "n_instances": 1,
+            "indices": [
+                378,
+                843,
+                1003,
+                507,
+                458,
+                421,
+                543,
+                945,
+                49,
+                486
+            ],
+            "replacements": 0
+        },
+        "12": {
+            "mean_cl100k_tokens": 4458,
+            "min_cl100k_tokens": 4458,
+            "max_cl100k_tokens": 4458,
+            "n_instances": 1,
+            "indices": [
+                703,
+                288,
+                421,
+                115,
+                738,
+                17,
+                458,
+                543,
+                1003,
+                486,
+                89,
+                129
+            ],
+            "replacements": 0
+        },
+        "16": {
+            "mean_cl100k_tokens": 8286,
+            "min_cl100k_tokens": 8286,
+            "max_cl100k_tokens": 8286,
+            "n_instances": 1,
+            "indices": [
+                598,
+                507,
+                486,
+                49,
+                421,
+                543,
+                324,
+                356,
+                796,
+                703,
+                347,
+                826,
+                738,
+                17,
+                287,
+                1003
+            ],
+            "replacements": 1
+        },
+        "20": {
+            "mean_cl100k_tokens": 9487,
+            "min_cl100k_tokens": 9487,
+            "max_cl100k_tokens": 9487,
+            "n_instances": 1,
+            "indices": [
+                910,
+                869,
+                361,
+                717,
+                505,
+                657,
+                655,
+                703,
+                482,
+                543,
+                1027,
+                421,
+                378,
+                1003,
+                486,
+                115,
+                917,
+                49,
+                945,
+                57
+            ],
+            "replacements": 2
+        },
+        "24": {
+            "mean_cl100k_tokens": 10805,
+            "min_cl100k_tokens": 10805,
+            "max_cl100k_tokens": 10805,
+            "n_instances": 1,
+            "indices": [
+                378,
+                738,
+                486,
+                939,
+                992,
+                703,
+                94,
+                21,
+                869,
+                543,
+                401,
+                324,
+                115,
+                421,
+                85,
+                592,
+                78,
+                57,
+                875,
+                409,
+                435,
+                429,
+                496,
+                45
+            ],
+            "replacements": 4
+        },
+        "32": {
+            "mean_cl100k_tokens": 11047,
+            "min_cl100k_tokens": 11047,
+            "max_cl100k_tokens": 11047,
+            "n_instances": 1,
+            "indices": [
+                768,
+                1003,
+                13,
+                129,
+                655,
+                486,
+                974,
+                175,
+                717,
+                953,
+                1010,
+                883,
+                324,
+                287,
+                356,
+                507,
+                72,
+                421,
+                496,
+                543,
+                106,
+                738,
+                786,
+                166,
+                703,
+                1031,
+                535,
+                352,
+                910,
+                482,
+                739,
+                860
+            ],
+            "replacements": 5
+        }
+    },
+    "tensorflow_tensorflow": {
+        "1": {
+            "mean_cl100k_tokens": 447,
+            "min_cl100k_tokens": 447,
+            "max_cl100k_tokens": 447,
+            "n_instances": 1,
+            "indices": [
+                1167
+            ],
+            "replacements": 0
+        },
+        "2": {
+            "mean_cl100k_tokens": 929,
+            "min_cl100k_tokens": 929,
+            "max_cl100k_tokens": 929,
+            "n_instances": 1,
+            "indices": [
+                920,
+                953
+            ],
+            "replacements": 0
+        },
+        "3": {
+            "mean_cl100k_tokens": 2147,
+            "min_cl100k_tokens": 2147,
+            "max_cl100k_tokens": 2147,
+            "n_instances": 1,
+            "indices": [
+                637,
+                576,
+                953
+            ],
+            "replacements": 0
+        },
+        "4": {
+            "mean_cl100k_tokens": 2715,
+            "min_cl100k_tokens": 2715,
+            "max_cl100k_tokens": 2715,
+            "n_instances": 1,
+            "indices": [
+                136,
+                414,
+                265,
+                2
+            ],
+            "replacements": 0
+        },
+        "6": {
+            "mean_cl100k_tokens": 5255,
+            "min_cl100k_tokens": 5255,
+            "max_cl100k_tokens": 5255,
+            "n_instances": 1,
+            "indices": [
+                953,
+                1097,
+                177,
+                265,
+                249,
+                414
+            ],
+            "replacements": 0
+        },
+        "8": {
+            "mean_cl100k_tokens": 4101,
+            "min_cl100k_tokens": 4101,
+            "max_cl100k_tokens": 4101,
+            "n_instances": 1,
+            "indices": [
+                261,
+                2,
+                1023,
+                136,
+                650,
+                878,
+                94,
+                300
+            ],
+            "replacements": 0
+        },
+        "10": {
+            "mean_cl100k_tokens": 6459,
+            "min_cl100k_tokens": 6459,
+            "max_cl100k_tokens": 6459,
+            "n_instances": 1,
+            "indices": [
+                878,
+                94,
+                249,
+                218,
+                920,
+                245,
+                650,
+                414,
+                1023,
+                423
+            ],
+            "replacements": 0
+        },
+        "12": {
+            "mean_cl100k_tokens": 7245,
+            "min_cl100k_tokens": 7245,
+            "max_cl100k_tokens": 7245,
+            "n_instances": 1,
+            "indices": [
+                245,
+                829,
+                650,
+                878,
+                300,
+                136,
+                948,
+                920,
+                261,
+                787,
+                867,
+                769
+            ],
+            "replacements": 0
+        },
+        "16": {
+            "mean_cl100k_tokens": 10045,
+            "min_cl100k_tokens": 10045,
+            "max_cl100k_tokens": 10045,
+            "n_instances": 1,
+            "indices": [
+                249,
+                650,
+                167,
+                1023,
+                185,
+                350,
+                414,
+                94,
+                777,
+                920,
+                460,
+                83,
+                9,
+                2,
+                1146,
+                622
+            ],
+            "replacements": 0
+        },
+        "20": {
+            "mean_cl100k_tokens": 10116,
+            "min_cl100k_tokens": 10116,
+            "max_cl100k_tokens": 10116,
+            "n_instances": 1,
+            "indices": [
+                449,
+                920,
+                143,
+                1146,
+                818,
+                50,
+                249,
+                261,
+                414,
+                769,
+                1023,
+                94,
+                538,
+                772,
+                2,
+                972,
+                650,
+                185,
+                136,
+                926
+            ],
+            "replacements": 0
+        },
+        "24": {
+            "mean_cl100k_tokens": 15736,
+            "min_cl100k_tokens": 15736,
+            "max_cl100k_tokens": 15736,
+            "n_instances": 1,
+            "indices": [
+                449,
+                265,
+                178,
+                1146,
+                704,
+                1121,
+                650,
+                711,
+                143,
+                948,
+                219,
+                185,
+                911,
+                813,
+                782,
+                534,
+                502,
+                990,
+                769,
+                906,
+                798,
+                249,
+                300,
+                972
+            ],
+            "replacements": 1
+        },
+        "32": {
+            "mean_cl100k_tokens": 19521,
+            "min_cl100k_tokens": 19521,
+            "max_cl100k_tokens": 19521,
+            "n_instances": 1,
+            "indices": [
+                22,
+                637,
+                782,
+                867,
+                457,
+                9,
+                642,
+                571,
+                38,
+                948,
+                125,
+                249,
+                704,
+                650,
+                468,
+                462,
+                278,
+                318,
+                2,
+                300,
+                274,
+                185,
+                136,
+                163,
+                1042,
+                1179,
+                636,
+                355,
+                261,
+                618,
+                29,
+                777
+            ],
+            "replacements": 0
+        }
+    },
+    "microsoft_vscode": {
+        "1": {
+            "mean_cl100k_tokens": 753,
+            "min_cl100k_tokens": 753,
+            "max_cl100k_tokens": 753,
+            "n_instances": 1,
+            "indices": [
+                1455
+            ],
+            "replacements": 0
+        },
+        "2": {
+            "mean_cl100k_tokens": 959,
+            "min_cl100k_tokens": 959,
+            "max_cl100k_tokens": 959,
+            "n_instances": 1,
+            "indices": [
+                719,
+                1455
+            ],
+            "replacements": 0
+        },
+        "3": {
+            "mean_cl100k_tokens": 1092,
+            "min_cl100k_tokens": 1092,
+            "max_cl100k_tokens": 1092,
+            "n_instances": 1,
+            "indices": [
+                1455,
+                719,
+                1573
+            ],
+            "replacements": 0
+        },
+        "4": {
+            "mean_cl100k_tokens": 1178,
+            "min_cl100k_tokens": 1178,
+            "max_cl100k_tokens": 1178,
+            "n_instances": 1,
+            "indices": [
+                2309,
+                1573,
+                1455,
+                2092
+            ],
+            "replacements": 0
+        },
+        "6": {
+            "mean_cl100k_tokens": 2309,
+            "min_cl100k_tokens": 2309,
+            "max_cl100k_tokens": 2309,
+            "n_instances": 1,
+            "indices": [
+                2232,
+                719,
+                1963,
+                1290,
+                3232,
+                3332
+            ],
+            "replacements": 0
+        },
+        "8": {
+            "mean_cl100k_tokens": 2805,
+            "min_cl100k_tokens": 2805,
+            "max_cl100k_tokens": 2805,
+            "n_instances": 1,
+            "indices": [
+                2134,
+                3258,
+                2977,
+                351,
+                1468,
+                2903,
+                3159,
+                1290
+            ],
+            "replacements": 0
+        },
+        "10": {
+            "mean_cl100k_tokens": 2975,
+            "min_cl100k_tokens": 2975,
+            "max_cl100k_tokens": 2975,
+            "n_instances": 1,
+            "indices": [
+                3239,
+                1420,
+                119,
+                1290,
+                719,
+                3258,
+                1700,
+                2903,
+                2325,
+                2977
+            ],
+            "replacements": 0
+        },
+        "12": {
+            "mean_cl100k_tokens": 4059,
+            "min_cl100k_tokens": 4059,
+            "max_cl100k_tokens": 4059,
+            "n_instances": 1,
+            "indices": [
+                1901,
+                3075,
+                2977,
+                276,
+                868,
+                812,
+                719,
+                296,
+                2903,
+                2555,
+                765,
+                351
+            ],
+            "replacements": 0
+        },
+        "16": {
+            "mean_cl100k_tokens": 6172,
+            "min_cl100k_tokens": 6172,
+            "max_cl100k_tokens": 6172,
+            "n_instances": 1,
+            "indices": [
+                765,
+                1516,
+                2903,
+                1903,
+                1700,
+                3248,
+                2036,
+                173,
+                715,
+                2977,
+                1061,
+                1455,
+                276,
+                3075,
+                483,
+                208
+            ],
+            "replacements": 0
+        },
+        "20": {
+            "mean_cl100k_tokens": 5446,
+            "min_cl100k_tokens": 5446,
+            "max_cl100k_tokens": 5446,
+            "n_instances": 1,
+            "indices": [
+                216,
+                1682,
+                692,
+                2821,
+                2977,
+                2092,
+                3075,
+                2675,
+                2134,
+                3053,
+                868,
+                351,
+                1770,
+                1290,
+                2522,
+                3084,
+                54,
+                1593,
+                576,
+                483
+            ],
+            "replacements": 0
+        },
+        "24": {
+            "mean_cl100k_tokens": 6421,
+            "min_cl100k_tokens": 6421,
+            "max_cl100k_tokens": 6421,
+            "n_instances": 1,
+            "indices": [
+                1143,
+                576,
+                2727,
+                2134,
+                1901,
+                1903,
+                68,
+                2325,
+                206,
+                2675,
+                1956,
+                833,
+                2977,
+                483,
+                2036,
+                208,
+                3075,
+                765,
+                1593,
+                3332,
+                3033,
+                909,
+                457,
+                3264
+            ],
+            "replacements": 0
+        },
+        "32": {
+            "mean_cl100k_tokens": 8096,
+            "min_cl100k_tokens": 8096,
+            "max_cl100k_tokens": 8096,
+            "n_instances": 1,
+            "indices": [
+                2727,
+                2977,
+                1582,
+                572,
+                56,
+                2903,
+                3258,
+                1682,
+                1477,
+                3101,
+                765,
+                2664,
+                3075,
+                216,
+                1770,
+                888,
+                3139,
+                2690,
+                1956,
+                2134,
+                1422,
+                868,
+                576,
+                1102,
+                54,
+                3305,
+                3095,
+                3084,
+                2409,
+                133,
+                2022,
+                875
+            ],
+            "replacements": 0
+        }
+    }
+}

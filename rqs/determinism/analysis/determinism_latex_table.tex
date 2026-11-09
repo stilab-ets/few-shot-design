@@ -1,0 +1,53 @@
+\begin{table*}[t!]
+    \centering
+    \fontsize{8}{9}\selectfont
+    \tabcolsep=0.1cm
+    \caption{Run-to-run Macro-F1 variability across repeated evaluations at temperature $0$.
+    For each repository--model pair, the values summarize the selected median-performing
+    prompt for each few-shot count $k$ (12 prompts per row), each evaluated 10 additional
+    times under the same inference setup. SD and Range are computed over the 10 repetitions
+    of a prompt; Median SD and Max Range are taken over the 12 values of $k$.
+    Zero-Var.\ is the share of prompts with identical Macro-F1 in all 10 repetitions;
+    Exact Reprod.\ is the share of the 120 repetitions matching the originally reported Macro-F1.
+    The last row pools all 240 prompts.}
+    \label{tab:inference-variability}
+    \begin{tabular}{llrrrrrr}
+        \toprule
+        \textbf{Repository} &
+        \textbf{Model} &
+        \textbf{Median SD} &
+        \textbf{Max Range} &
+        \textbf{Median $|\mathrm{Orig.}-\mathrm{Mean}|$} &
+        \textbf{Max $|\mathrm{Orig.}-\mathrm{Mean}|$} &
+        \textbf{Zero-Var.\ (\%)} &
+        \textbf{Exact Reprod.\ (\%)} \\
+        \midrule
+\multirow{4}{*}{Bitcoin} & Llama-3.1-8B-Instruct & 0.0000 & 0.0200 & 0.0000 & 0.0102 & 66.67\% & 70.83\% \\
+ & Mistral-7B-Instruct-v0.3 & 0.0019 & 0.0291 & 0.0052 & 0.0106 & 33.33\% & 37.50\% \\
+ & Qwen2.5-7B-Instruct & 0.0012 & 0.0143 & 0.0079 & 0.0199 & 50.00\% & 41.67\% \\
+ & gemma-3-12b-it & 0.0000 & 0.0167 & 0.0000 & 0.0180 & 83.33\% & 89.17\% \\
+\midrule
+\multirow{4}{*}{React} & Llama-3.1-8B-Instruct & 0.0059 & 0.0691 & 0.0019 & 0.0343 & 41.67\% & 77.50\% \\
+ & Mistral-7B-Instruct-v0.3 & 0.0002 & 0.0303 & 0.0040 & 0.0266 & 50.00\% & 53.33\% \\
+ & Qwen2.5-7B-Instruct & 0.0000 & 0.0226 & 0.0000 & 0.0136 & 66.67\% & 90.83\% \\
+ & gemma-3-12b-it & 0.0000 & 0.0342 & 0.0023 & 0.0284 & 66.67\% & 66.67\% \\
+\midrule
+\multirow{4}{*}{VS Code} & Llama-3.1-8B-Instruct & 0.0021 & 0.0112 & 0.0029 & 0.0085 & 0.00\% & 2.50\% \\
+ & Mistral-7B-Instruct-v0.3 & 0.0018 & 0.0118 & 0.0027 & 0.0144 & 0.00\% & 2.50\% \\
+ & Qwen2.5-7B-Instruct & 0.0014 & 0.0097 & 0.0028 & 0.0064 & 0.00\% & 7.50\% \\
+ & gemma-3-12b-it & 0.0022 & 0.0164 & 0.0018 & 0.0056 & 0.00\% & 10.83\% \\
+\midrule
+\multirow{4}{*}{OpenCV} & Llama-3.1-8B-Instruct & 0.0061 & 0.0232 & 0.0038 & 0.0148 & 25.00\% & 40.00\% \\
+ & Mistral-7B-Instruct-v0.3 & 0.0031 & 0.0171 & 0.0057 & 0.0137 & 16.67\% & 15.00\% \\
+ & Qwen2.5-7B-Instruct & 0.0017 & 0.0098 & 0.0015 & 0.0112 & 33.33\% & 60.00\% \\
+ & gemma-3-12b-it & 0.0024 & 0.0347 & 0.0014 & 0.0103 & 16.67\% & 60.83\% \\
+\midrule
+\multirow{4}{*}{TensorFlow} & Llama-3.1-8B-Instruct & 0.0044 & 0.0192 & 0.0033 & 0.0136 & 33.33\% & 37.50\% \\
+ & Mistral-7B-Instruct-v0.3 & 0.0030 & 0.0252 & 0.0033 & 0.0144 & 16.67\% & 31.67\% \\
+ & Qwen2.5-7B-Instruct & 0.0029 & 0.0159 & 0.0044 & 0.0097 & 16.67\% & 29.17\% \\
+ & gemma-3-12b-it & 0.0028 & 0.0240 & 0.0017 & 0.0086 & 8.33\% & 48.33\% \\
+\midrule
+\multicolumn{2}{l}{\textbf{All (240 prompts)}} & 0.0022 & 0.0691 & 0.0023 & 0.0343 & 31.25\% & 43.67\% \\
+        \bottomrule
+    \end{tabular}
+\end{table*}

@@ -1,2 +1,2 @@
-Timestamp,Repo,Model,FewShot_Count,Macro_F1,Token_Count
-2026-03-07T07:52:09.331476+00:00,tensorflow_tensorflow,meta-llama/Llama-3.1-8B-Instruct,0,0.33717948717948715,84
+Timestamp,FewShot_Count,Individual,Macro_F1,Token_Count
+2026-09-26 16:48:11.287149,0,ZERO_SHOT_0,0.30186046511627906,84

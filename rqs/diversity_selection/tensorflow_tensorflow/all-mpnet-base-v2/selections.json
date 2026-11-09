@@ -1,0 +1,404 @@
+{
+  "metadata": {
+    "repo": "tensorflow_tensorflow",
+    "embedding_model": "all-mpnet-base-v2",
+    "strategy": "cluster_diversity_kmeans_fixed",
+    "clustering_rule": "k-means (seed=42) on train embeddings, n_clusters = k (the shot budget)",
+    "representative_selection": "example closest to its cluster's centroid; NOT based on similarity to any test query",
+    "shared_across_models": [
+      "Qwen/Qwen2.5-7B-Instruct",
+      "meta-llama/Llama-3.1-8B-Instruct",
+      "mistralai/Mistral-7B-Instruct-v0.3",
+      "google/gemma-3-12b-it"
+    ],
+    "context_limits": {
+      "Qwen/Qwen2.5-7B-Instruct": 32768,
+      "meta-llama/Llama-3.1-8B-Instruct": 131072,
+      "mistralai/Mistral-7B-Instruct-v0.3": 32768,
+      "google/gemma-3-12b-it": 32768
+    },
+    "worst_case_user_tokens": {
+      "Qwen/Qwen2.5-7B-Instruct": 5418,
+      "meta-llama/Llama-3.1-8B-Instruct": 5137,
+      "mistralai/Mistral-7B-Instruct-v0.3": 7098,
+      "google/gemma-3-12b-it": 6484
+    },
+    "fallback": "replace the longest example with the next-closest-to-centroid unused example, same cluster first, else borrowed from the cluster with the next-closest unused representative overall",
+    "prompt_order": "grouped by cluster id",
+    "created_at": "2026-09-29 22:29:11.790708"
+  },
+  "selections": {
+    "1": {
+      "indices": [
+        1167
+      ],
+      "status": "ok",
+      "replacements": 0,
+      "cluster_of_index": {
+        "1167": 0
+      }
+    },
+    "2": {
+      "indices": [
+        920,
+        953
+      ],
+      "status": "ok",
+      "replacements": 0,
+      "cluster_of_index": {
+        "920": 0,
+        "953": 1
+      }
+    },
+    "3": {
+      "indices": [
+        637,
+        576,
+        953
+      ],
+      "status": "ok",
+      "replacements": 0,
+      "cluster_of_index": {
+        "637": 0,
+        "576": 1,
+        "953": 2
+      }
+    },
+    "4": {
+      "indices": [
+        136,
+        414,
+        265,
+        2
+      ],
+      "status": "ok",
+      "replacements": 0,
+      "cluster_of_index": {
+        "136": 0,
+        "414": 1,
+        "265": 2,
+        "2": 3
+      }
+    },
+    "6": {
+      "indices": [
+        953,
+        1097,
+        177,
+        265,
+        249,
+        414
+      ],
+      "status": "ok",
+      "replacements": 0,
+      "cluster_of_index": {
+        "953": 0,
+        "1097": 1,
+        "177": 2,
+        "265": 3,
+        "249": 4,
+        "414": 5
+      }
+    },
+    "8": {
+      "indices": [
+        261,
+        2,
+        1023,
+        136,
+        650,
+        878,
+        94,
+        300
+      ],
+      "status": "ok",
+      "replacements": 0,
+      "cluster_of_index": {
+        "261": 0,
+        "2": 1,
+        "1023": 2,
+        "136": 3,
+        "650": 4,
+        "878": 5,
+        "94": 6,
+        "300": 7
+      }
+    },
+    "10": {
+      "indices": [
+        878,
+        94,
+        249,
+        218,
+        920,
+        245,
+        650,
+        414,
+        1023,
+        423
+      ],
+      "status": "ok",
+      "replacements": 0,
+      "cluster_of_index": {
+        "878": 0,
+        "94": 1,
+        "249": 2,
+        "218": 3,
+        "920": 4,
+        "245": 5,
+        "650": 6,
+        "414": 7,
+        "1023": 8,
+        "423": 9
+      }
+    },
+    "12": {
+      "indices": [
+        245,
+        829,
+        650,
+        878,
+        300,
+        136,
+        948,
+        920,
+        261,
+        787,
+        867,
+        769
+      ],
+      "status": "ok",
+      "replacements": 0,
+      "cluster_of_index": {
+        "245": 0,
+        "829": 1,
+        "650": 2,
+        "878": 3,
+        "300": 4,
+        "136": 5,
+        "948": 6,
+        "920": 7,
+        "261": 8,
+        "787": 9,
+        "867": 10,
+        "769": 11
+      }
+    },
+    "16": {
+      "indices": [
+        249,
+        650,
+        167,
+        1023,
+        185,
+        350,
+        414,
+        94,
+        777,
+        920,
+        460,
+        83,
+        9,
+        2,
+        1146,
+        622
+      ],
+      "status": "ok",
+      "replacements": 0,
+      "cluster_of_index": {
+        "249": 0,
+        "650": 1,
+        "167": 2,
+        "1023": 3,
+        "185": 4,
+        "350": 5,
+        "414": 6,
+        "94": 7,
+        "777": 8,
+        "920": 9,
+        "460": 10,
+        "83": 11,
+        "9": 12,
+        "2": 13,
+        "1146": 14,
+        "622": 15
+      }
+    },
+    "20": {
+      "indices": [
+        449,
+        920,
+        143,
+        1146,
+        818,
+        50,
+        249,
+        261,
+        414,
+        769,
+        1023,
+        94,
+        538,
+        772,
+        2,
+        972,
+        650,
+        185,
+        136,
+        926
+      ],
+      "status": "ok",
+      "replacements": 0,
+      "cluster_of_index": {
+        "449": 0,
+        "920": 1,
+        "143": 2,
+        "1146": 3,
+        "818": 4,
+        "50": 5,
+        "249": 6,
+        "261": 7,
+        "414": 8,
+        "769": 9,
+        "1023": 10,
+        "94": 11,
+        "538": 12,
+        "772": 13,
+        "2": 14,
+        "972": 15,
+        "650": 16,
+        "185": 17,
+        "136": 18,
+        "926": 19
+      }
+    },
+    "24": {
+      "indices": [
+        449,
+        265,
+        178,
+        1146,
+        704,
+        1121,
+        650,
+        711,
+        143,
+        948,
+        219,
+        185,
+        911,
+        813,
+        782,
+        534,
+        502,
+        990,
+        769,
+        906,
+        798,
+        249,
+        300,
+        972
+      ],
+      "status": "ok",
+      "replacements": 1,
+      "cluster_of_index": {
+        "449": 0,
+        "265": 1,
+        "178": 2,
+        "1146": 3,
+        "704": 4,
+        "1121": 5,
+        "650": 6,
+        "711": 7,
+        "143": 8,
+        "948": 9,
+        "219": 10,
+        "185": 11,
+        "911": 12,
+        "813": 13,
+        "782": 14,
+        "534": 15,
+        "502": 16,
+        "990": 17,
+        "769": 18,
+        "906": 19,
+        "798": 20,
+        "249": 21,
+        "300": 22,
+        "972": 23
+      }
+    },
+    "32": {
+      "indices": [
+        22,
+        637,
+        782,
+        867,
+        457,
+        9,
+        642,
+        571,
+        38,
+        948,
+        125,
+        249,
+        704,
+        650,
+        468,
+        462,
+        278,
+        318,
+        2,
+        300,
+        274,
+        185,
+        136,
+        163,
+        1042,
+        1179,
+        636,
+        355,
+        261,
+        618,
+        29,
+        777
+      ],
+      "status": "ok",
+      "replacements": 0,
+      "cluster_of_index": {
+        "22": 0,
+        "637": 1,
+        "782": 2,
+        "867": 3,
+        "457": 4,
+        "9": 5,
+        "642": 6,
+        "571": 7,
+        "38": 8,
+        "948": 9,
+        "125": 10,
+        "249": 11,
+        "704": 12,
+        "650": 13,
+        "468": 14,
+        "462": 15,
+        "278": 16,
+        "318": 17,
+        "2": 18,
+        "300": 19,
+        "274": 20,
+        "185": 21,
+        "136": 22,
+        "163": 23,
+        "1042": 24,
+        "1179": 25,
+        "636": 26,
+        "355": 27,
+        "261": 28,
+        "618": 29,
+        "29": 30,
+        "777": 31
+      }
+    }
+  }
+}
